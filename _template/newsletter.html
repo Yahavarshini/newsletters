@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- ✏️ EDIT: "Month Year" e.g. "June 2026" -->
+  <!-- EDIT: "Month Year" e.g. "June 2026" -->
   <title>iNextLabs · Engage AI Newsletter · Month Year</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -70,6 +70,8 @@
 <body>
 <a id="top"></a>
 <div class="nl">
+
+  <!-- HEADER -->
   <div class="nl-header">
     <div class="nl-logo">
       <div class="nl-logo-icon"><i class="ti ti-brain"></i></div>
@@ -84,49 +86,96 @@
       <span class="nl-badge nl-badge-issue">Issue #XX</span>
     </div>
   </div>
+
+  <!-- HERO -->
   <div class="nl-hero">
     <div class="nl-hero-eyebrow">Product Newsletter</div>
-    <!-- ✏️ EDIT: Title -->
+    <!-- ✏️ EDIT: Title — keep short, 2 lines max -->
     <div class="nl-hero-title">What we shipped<br>this month</div>
+    <!-- ✏️ EDIT: Subtitle — who this is for -->
     <div class="nl-hero-sub">A monthly walkthrough of new Engage AI features — written for implementation, sales, marketing, and HR teams.</div>
   </div>
+
+  <!-- STATS — ✏️ EDIT: Update all 3 numbers -->
   <div class="nl-stats">
-    <div class="nl-stat"><div class="nl-stat-num accent">0</div><div class="nl-stat-label">Features shipped</div></div>
-    <div class="nl-stat"><div class="nl-stat-num">0+</div><div class="nl-stat-label">Teams benefited</div></div>
-    <div class="nl-stat"><div class="nl-stat-num accent" style="font-size:20px;">↑ CX</div><div class="nl-stat-label">Customer experience</div></div>
+    <div class="nl-stat">
+      <div class="nl-stat-num accent">0</div>   <!-- ✏️ Features shipped -->
+      <div class="nl-stat-label">Features shipped</div>
+    </div>
+    <div class="nl-stat">
+      <div class="nl-stat-num">0+</div>          <!-- ✏️ Teams benefited -->
+      <div class="nl-stat-label">Teams benefited</div>
+    </div>
+    <div class="nl-stat">
+      <div class="nl-stat-num accent" style="font-size:20px;">↑ CX</div>
+      <div class="nl-stat-label">Customer experience</div>
+    </div>
   </div>
+
   <div class="nl-body">
     <div class="nl-section-eyebrow">New this month</div>
-    <!-- ══ FEATURE CARD — Copy this block for each feature ══ -->
+
+    <!-- ══════════════════════════════════════════
+         FEATURE CARD — Copy this block for each feature
+         ══════════════════════════════════════════ -->
     <div class="nl-card">
-      <div class="nl-card-icon"><i class="ti ti-sparkles"></i><!-- ✏️ EDIT: icon --></div>
+      <div class="nl-card-icon">
+        <!-- ✏️ EDIT: Icon name from tabler.io/icons -->
+        <i class="ti ti-sparkles"></i>
+      </div>
       <div class="nl-card-body">
-        <div class="nl-card-tag">Category · Tag<!-- ✏️ --></div>
-        <div class="nl-card-title">Feature Name Here<!-- ✏️ --></div>
-        <div class="nl-card-desc">Short description. Mention <strong>the main benefit</strong> clearly.<!-- ✏️ --></div>
+        <!-- ✏️ EDIT: Short category tag e.g. "AI · Automation" -->
+        <div class="nl-card-tag">Category · Tag</div>
+        <!-- ✏️ EDIT: Feature name -->
+        <div class="nl-card-title">Feature Name Here</div>
+        <!-- ✏️ EDIT: 2–3 sentences. Use <strong> for key phrases -->
+        <div class="nl-card-desc">
+          Short description of what this feature does. Mention <strong>the main benefit</strong> clearly. Keep it simple for a non-technical audience.
+        </div>
+        <!-- ✏️ EDIT: 3–5 pills summarising key attributes -->
         <div class="nl-pills">
           <span class="nl-pill"><i class="ti ti-check"></i> Key highlight 1</span>
           <span class="nl-pill"><i class="ti ti-check"></i> Key highlight 2</span>
           <span class="nl-pill"><i class="ti ti-check"></i> Key highlight 3</span>
         </div>
-        <a class="nl-cta-btn" href="feature-name.html"><!-- ✏️ EDIT href -->
+        <!-- ✏️ EDIT: href = relative path to this feature's detail page -->
+        <a class="nl-cta-btn" href="feature-name.html">
           <i class="ti ti-arrow-right"></i> See full walkthrough
         </a>
       </div>
     </div>
-    <!-- ══ END FEATURE CARD ══ -->
+    <!-- ══ END FEATURE CARD — copy above block to add more features ══ -->
+
     <div class="nl-divider"></div>
+
+    <!-- COMING SOON -->
     <div class="nl-section-eyebrow">On the horizon</div>
+    <!-- ✏️ EDIT: Update "coming next" text -->
     <div class="nl-coming">
       <div class="nl-coming-icon"><i class="ti ti-clock-hour-4"></i></div>
-      <div class="nl-coming-text"><strong>Coming next:</strong> Describe what's coming.<!-- ✏️ --></div>
+      <div class="nl-coming-text">
+        <strong>Coming next:</strong> Describe what's coming in next month or upcoming releases.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="nl-footer">
+    <div class="nl-footer-left">
+      Built by the <strong>iNextLabs Product Team</strong><br>
+      Questions? Reach out on <strong>#product-updates</strong>
+    </div>
+    <div class="nl-footer-right">
+      <span class="nl-footer-tag">Engage AI</span>
+      <span class="nl-footer-tag">Monthly</span>
     </div>
   </div>
-  <div class="nl-footer">
-    <div class="nl-footer-left">Built by the <strong>iNextLabs Product Team</strong><br>Questions? Reach out on <strong>#product-updates</strong></div>
-    <div class="nl-footer-right"><span class="nl-footer-tag">Engage AI</span><span class="nl-footer-tag">Monthly</span></div>
+
+  <div class="back-top">
+    <a href="#top"><i class="ti ti-arrow-up"></i> Back to top</a>
   </div>
-  <div class="back-top"><a href="#top"><i class="ti ti-arrow-up"></i> Back to top</a></div>
+
 </div>
 </body>
 </html>
