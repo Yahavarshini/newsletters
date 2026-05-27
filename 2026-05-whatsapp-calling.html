@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp Business Calling — iNextLabs Engage AI · May 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Fustat', 'Inter', sans-serif;
+      background: #f5f5f7;
+      min-height: 100vh;
+      padding: 32px 16px;
+    }
+
+    /* ── WRAPPER ── */
+    .dp {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e5e5e5;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    /* ── NAV ── */
+    .dp-nav {
+      background: #fff;
+      border-bottom: 1px solid #efefef;
+      padding: 14px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .dp-nav-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: #aaa;
+      cursor: pointer; text-decoration: none;
+      transition: color 0.15s;
+      font-family: 'Fustat', sans-serif;
+    }
+    .dp-nav-back:hover { color: #e8452a; }
+    .dp-nav-back i { font-size: 14px; }
+    .dp-nav-badge {
+      font-size: 11px; font-weight: 700;
+      background: #fff2ef; color: #e8452a;
+      border: 1px solid #fac9be;
+      border-radius: 100px; padding: 3px 10px;
+    }
+
+    /* ── HERO (light) ── */
+    .dp-hero {
+      background: #ffffff;
+      border-top: 3px solid #e8452a;
+      border-bottom: 1px solid #efefef;
+      padding: 40px 36px 36px;
+      position: relative; overflow: hidden;
+    }
+    .dp-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -40px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(232,69,42,0.06) 0%, transparent 65%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .dp-hero-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #e8452a; margin-bottom: 14px;
+    }
+    .dp-hero-title {
+      font-size: 34px; font-weight: 800;
+      color: #1a1a1a; line-height: 1.1;
+      letter-spacing: -0.025em; margin-bottom: 12px;
+      position: relative; z-index: 1;
+    }
+    .dp-hero-desc {
+      font-size: 14px; color: #666;
+      line-height: 1.7; max-width: 500px;
+      position: relative; z-index: 1;
+    }
+    .dp-hero-meta {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px;
+      position: relative; z-index: 1;
+    }
+    .dp-meta-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600;
+      background: #f5f5f7; border: 1px solid #e5e5e5;
+      color: #888; border-radius: 100px; padding: 5px 12px;
+    }
+    .dp-meta-chip i { font-size: 12px; }
+    .dp-meta-chip.lit { background: #fff2ef; border-color: #fac9be; color: #e8452a; }
+
+    /* ── BODY ── */
+    .dp-body { padding: 32px 36px; background: #fff; }
+    .dp-section { margin-bottom: 32px; }
+
+    .dp-section-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #ccc; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .dp-section-label::after { content: ''; flex: 1; height: 1px; background: #f0f0f0; }
+
+    .dp-section-title { font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; letter-spacing: -0.015em; }
+    .dp-section-body { font-size: 13.5px; color: #666; line-height: 1.75; }
+    .dp-section-body strong { color: #333; font-weight: 700; }
+
+    /* ── BEFORE / AFTER ── */
+    .dp-before-after {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-top: 16px;
+    }
+    .dp-ba-card { border-radius: 12px; padding: 20px; }
+    .dp-ba-card.before { background: #fff8f7; border: 1px solid #fde0d9; }
+    .dp-ba-card.after { background: #f4fff8; border: 1px solid #bbf7d0; }
+    .dp-ba-header {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .dp-ba-header.before { color: #e8452a; }
+    .dp-ba-header.after { color: #16a34a; }
+    .dp-ba-header i { font-size: 14px; }
+    .dp-ba-list { list-style: none; }
+    .dp-ba-list li {
+      font-size: 12.5px; color: #666;
+      padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.55;
+    }
+    .dp-ba-list li:last-child { border-bottom: none; }
+    .dp-ba-list li i { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .dp-ba-list.before-list li i { color: #e8452a; }
+    .dp-ba-list.after-list li i { color: #16a34a; }
+
+    /* ── CALLOUT ── */
+    .dp-callout {
+      background: #fafafa; border: 1px solid #efefef;
+      border-left: 3px solid #e8452a;
+      border-radius: 10px; padding: 18px 20px;
+      margin-top: 14px;
+    }
+    .dp-callout-title {
+      font-size: 13px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .dp-callout-title i { color: #e8452a; font-size: 15px; }
+    .dp-callout-body { font-size: 12.5px; color: #888; line-height: 1.7; }
+    .dp-callout-body strong { color: #555; font-weight: 700; }
+
+    /* ── HOW IT WORKS ── */
+    .dp-steps { margin-top: 16px; }
+    .dp-step {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px 0; border-bottom: 1px solid #f5f5f5;
+    }
+    .dp-step:last-child { border-bottom: none; }
+    .dp-step-num {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: #e8452a; color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800;
+    }
+    .dp-step-title { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+    .dp-step-desc { font-size: 12.5px; color: #888; line-height: 1.65; }
+    .dp-step-desc strong { color: #555; font-weight: 700; }
+
+    /* ── SCREENSHOT PLACEHOLDERS ── */
+    .dp-screenshot {
+      background: #f7f7f7; border: 1.5px dashed #ddd;
+      border-radius: 12px; padding: 32px 20px;
+      text-align: center; margin-top: 16px;
+    }
+    /* Replace placeholder with real image:
+       <img src="screenshots/your-screenshot.png" style="width:100%;border-radius:12px;" alt="Description"> */
+    .dp-screenshot i { font-size: 30px; color: #ccc; display: block; margin-bottom: 10px; }
+    .dp-screenshot-label { font-size: 13px; color: #bbb; font-weight: 600; }
+    .dp-screenshot-sub { font-size: 11px; color: #ccc; margin-top: 4px; }
+
+    /* ── PERMISSION LOG ── */
+    .dp-perm-card {
+      background: #fffbf0; border: 1px solid #fde68a;
+      border-radius: 12px; padding: 20px 22px;
+      margin-top: 16px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .dp-perm-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: #fef3c7; border: 1px solid #fde68a;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dp-perm-icon i { color: #d97706; font-size: 20px; }
+    .dp-perm-title { font-size: 14px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
+    .dp-perm-desc { font-size: 12.5px; color: #888; line-height: 1.7; }
+    .dp-perm-desc strong { color: #555; font-weight: 700; }
+    .dp-perm-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .dp-perm-pill {
+      font-size: 11px; color: #92400e;
+      background: #fef3c7; border: 1px solid #fde68a;
+      border-radius: 100px; padding: 3px 10px;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* ── OUTCOMES ── */
+    .dp-outcome-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-top: 16px;
+    }
+    .dp-outcome-card {
+      background: #fafafa; border: 1px solid #efefef;
+      border-radius: 12px; padding: 20px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .dp-outcome-card:hover { border-color: #fac9be; box-shadow: 0 2px 12px rgba(232,69,42,0.06); }
+    .dp-outcome-icon {
+      width: 38px; height: 38px;
+      background: #fff2ef; border: 1px solid #fac9be;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px;
+    }
+    .dp-outcome-icon i { color: #e8452a; font-size: 18px; }
+    .dp-outcome-title { font-size: 13px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
+    .dp-outcome-desc { font-size: 12px; color: #888; line-height: 1.65; }
+    .dp-outcome-desc strong { color: #555; font-weight: 700; }
+
+    /* ── SUBSCRIPTION ── */
+    .dp-sub-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 10px; margin-top: 16px;
+    }
+    .dp-sub-card {
+      border: 1px solid #efefef; border-radius: 12px;
+      padding: 18px 16px; text-align: center; background: #fafafa;
+    }
+    .dp-sub-card.active { border: 2px solid #e8452a; background: #fff2ef; }
+    .dp-sub-badge {
+      display: inline-block; font-size: 9px; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: #e8452a; color: #fff;
+      border-radius: 100px; padding: 2px 8px; margin-bottom: 10px;
+    }
+    .dp-sub-name { font-size: 14px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
+    .dp-sub-status { font-size: 12px; margin-top: 8px; font-weight: 600; }
+    .dp-sub-status.yes { color: #16a34a; }
+    .dp-sub-status.no { color: #ccc; }
+    .dp-sub-status i { font-size: 13px; vertical-align: -2px; margin-right: 3px; }
+    .dp-sub-note { font-size: 11px; color: #aaa; margin-top: 6px; line-height: 1.5; }
+
+    /* ── COST ── */
+    .dp-cost-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-top: 16px;
+    }
+    .dp-cost-card {
+      border: 1px solid #efefef; border-radius: 12px;
+      padding: 18px 20px; background: #fafafa;
+    }
+    .dp-cost-card.highlight { border-color: #fac9be; background: #fff8f7; }
+    .dp-cost-label {
+      font-size: 11px; font-weight: 700; color: #aaa;
+      text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .dp-cost-label i { font-size: 13px; }
+    .dp-cost-value { font-size: 18px; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
+    .dp-cost-value.orange { color: #e8452a; }
+    .dp-cost-desc { font-size: 12px; color: #aaa; line-height: 1.55; }
+
+    /* ── CTA STRIP ── */
+    .dp-cta-strip {
+      background: #f5f5f7;
+      border-top: 1px solid #efefef;
+      padding: 28px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 14px;
+    }
+    .dp-cta-text { font-size: 15px; font-weight: 800; color: #1a1a1a; }
+    .dp-cta-sub { font-size: 12px; color: #888; margin-top: 2px; }
+    .dp-cta-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 700;
+      color: #fff; background: #e8452a;
+      border: none; border-radius: 100px;
+      padding: 10px 22px; cursor: pointer;
+      font-family: 'Fustat', sans-serif;
+      text-decoration: none;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .dp-cta-btn:hover { background: #d43d23; }
+
+    /* ── FOOTER ── */
+    .dp-footer {
+      background: #f5f5f7; border-top: 1px solid #efefef;
+      padding: 14px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .dp-footer-text { font-size: 11px; color: #bbb; }
+    .dp-footer-right { display: flex; gap: 6px; }
+    .dp-footer-chip { font-size: 11px; color: #bbb; border: 1px solid #e5e5e5; border-radius: 100px; padding: 3px 10px; }
+
+    .dp-divider { height: 1px; background: #f5f5f5; margin: 4px 0 28px; }
+  </style>
+</head>
+<body>
+
+<div class="dp">
+
+  <!-- ══ NAV ══ -->
+  <div class="dp-nav">
+    <!-- EDIT: href = path back to newsletter index -->
+    <a class="dp-nav-back" href="2026-05-index.html">
+      <i class="ti ti-arrow-left"></i> Back to Newsletter      git remote add origin https://github.com/Yahavarshini/newsletters.git
+    </a>
+    <span class="dp-nav-badge">WhatsApp · Voice</span>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <div class="dp-hero">
+    <div class="dp-hero-tag">
+      <i class="ti ti-phone-call"></i> Feature Deep Dive
+    </div>
+    <div class="dp-hero-title">WhatsApp<br>Business Initiated Calling</div>
+    <div class="dp-hero-desc">Call your customers directly over WhatsApp, with full context from the chat, automatic recording, and a transcript after every conversation. No separate phone number needed. No lost context.</div>
+    <div class="dp-hero-meta">
+      <span class="dp-meta-chip lit"><i class="ti ti-circle-check"></i> Staging</span>
+      <span class="dp-meta-chip"><i class="ti ti-calendar"></i> Shipped May 2026</span>
+    </div>
+  </div>
+
+  <div class="dp-body">
+
+    <!-- ══ PROBLEM ══ -->
+    <div class="dp-section">
+      <div class="dp-section-label">The Problem We're Solving</div>
+      <div class="dp-section-title">Telephony calling was broken for WhatsApp businesses</div>
+      <div class="dp-section-body">
+        Traditional telephony support creates a fragmented, confusing experience - for both agents and customers. Here's exactly what was going wrong.
+      </div>
+
+      <div class="dp-before-after">
+        <div class="dp-ba-card before">
+          <div class="dp-ba-header before"><i class="ti ti-x"></i> Before</div>
+          <ul class="dp-ba-list before-list">
+            <li><i class="ti ti-x"></i> Each agent needed a separate phone number - customers received calls from unknown numbers and suspected spam or blocked them</li>
+            <li><i class="ti ti-x"></i> The WhatsApp bot number and the support phone number were different - customers got confused about who was calling them</li>
+            <li><i class="ti ti-x"></i> Customers had to call the business - long wait times made them frustrated before the conversation even started</li>
+            <li><i class="ti ti-x"></i> Agents had zero chat context on the call - they had to ask the customer to repeat everything from scratch</li>
+            <li><i class="ti ti-x"></i> Nothing was captured after the call - no record, no transcript, no accountability</li>
+          </ul>
+        </div>
+        <div class="dp-ba-card after">
+          <div class="dp-ba-header after"><i class="ti ti-check"></i> Now with WhatsApp Calling</div>
+          <ul class="dp-ba-list after-list">
+            <li><i class="ti ti-check"></i> Calls come from the same verified WhatsApp Business number - customers recognise and trust who is calling</li>
+            <li><i class="ti ti-check"></i> One number for everything - chat, bot, and call - no confusion, no spam flags</li>
+            <li><i class="ti ti-check"></i> Business calls the customer proactively, with their permission - faster resolution, less frustration</li>
+            <li><i class="ti ti-check"></i> Agent has full chat history visible during the call - no need for the customer to repeat anything</li>
+            <li><i class="ti ti-check"></i> Every call is recorded and transcribed automatically - full record attached to the conversation thread</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dp-callout">
+        <div class="dp-callout-title">
+          <i class="ti ti-shield-check"></i> Why we ask for permission before calling
+        </div>
+        <div class="dp-callout-body">
+          Unlike a cold call, WhatsApp Business Initiated Calling starts with <strong>a consent request</strong> sent to the customer over WhatsApp. The customer taps <strong>Allow</strong> or <strong>Don't Allow</strong> - and only if they approve does the agent get to call them. This means the customer is expecting the call, trust's it, and is more likely to engage productively. It's a faster, more respectful way to resolve queries.
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ HOW IT WORKS ══ -->
+    <div class="dp-section">
+      <div class="dp-section-label">How It Works</div>
+      <div class="dp-section-title">From chat to call - everything in one seamless flow</div>
+      <div class="dp-steps">
+        <div class="dp-step">
+          <div class="dp-step-num">1</div>
+          <div>
+            <div class="dp-step-title">Customer raises a query on WhatsApp</div>
+            <div class="dp-step-desc">The conversation happens in the usual chat thread, the AI bot or a live agent handles it. If the query is complex, the agent decides a call would resolve it faster.</div>
+          </div>
+        </div>
+        <div class="dp-step">
+          <div class="dp-step-num">2</div>
+          <div>
+            <div class="dp-step-title">Agent sends a Call Permission Request</div>
+            <div class="dp-step-desc">With one click, the agent sends a WhatsApp message asking the customer: <strong>"Can we call you to help resolve this faster?"</strong> The customer taps Allow, Temporary Allow or Don't Allow from their phone.</div>
+            <img src="images/Whatsapp-call/Call_Permission_Request.png" style="width:100%;border-radius:10px;margin-top:12px;border:1px solid #efefef;" alt="Call permission request on WhatsApp">
+          </div>
+        </div>
+        <div class="dp-step">
+          <div class="dp-step-num">3</div>
+          <div>
+            <div class="dp-step-title">Agent initiates the call from the dashboard</div>
+            <div class="dp-step-desc">Once approved, the agent clicks Call directly inside Engage AI. The call rings on the customer's WhatsApp - from the <strong>same verified business number</strong> they've been chatting with. No separate phone number needed.</div>
+            <img src="images/Whatsapp-call/Support_Desk_WhatsApp_Calling.png" style="width:100%;border-radius:10px;margin-top:12px;border:1px solid #efefef;" alt="Support desk WhatsApp calling interface">
+          </div>
+        </div>
+        <div class="dp-step">
+          <div class="dp-step-num">4</div>
+          <div>
+            <div class="dp-step-title">Call is logged - Answered and Unanswered Calls</div>
+            <div class="dp-step-desc">The conversation thread captures the full call lifecycle: <strong>Call Initiated → Call Ended → Call Summary</strong> - all visible in the same chat, so the context is never lost. Also Call Logs is maintained separately for easy reference.</div>
+            <img src="images/Whatsapp-call/Call_Logs.png" style="width:100%;border-radius:10px;margin-top:12px;border:1px solid #efefef;" alt="Call-history logs">
+          </div>
+        </div>
+        <div class="dp-step">
+          <div class="dp-step-num">5</div>
+          <div>
+            <div class="dp-step-title">Call Summary — recording + transcript attached</div>
+            <div class="dp-step-desc">After the call ends, a <strong>call summary</strong> is automatically generated - with the recording, full transcript attributed by speaker, and call duration. It's linked directly to the conversation thread so anyone can review it later.</div>
+            <img src="images/Whatsapp-call/Support_Desk_WhatsApp_Calling.png" style="width:100%;border-radius:10px;margin-top:12px;border:1px solid #efefef;" alt="Call-summary logs">
+          </div>
+        </div>
+      </div>
+      <!-- Call-Back Permission Logs (simplified) -->
+      <div class="dp-callout" style="margin-top:20px;">
+        <div class="dp-callout-title"><i class="ti ti-clipboard-list"></i> Call-Back Permission Logs</div>
+        <div class="dp-callout-body">Every permission request is automatically tracked - <strong>which customer, which agent, when sent, and what they responded</strong>. Filter by status and date range for a full audit trail.</div>
+        <img src="images/Whatsapp-call/Logs_Call_Request.png" style="width:100%;border-radius:10px;margin-top:12px;border:1px solid #efefef;" alt="Call-back permission logs">
+      </div>
+    </div>
+ 
+
+    <!-- ══ OUTCOMES & VALUE ══ -->
+    <div class="dp-section">
+      <div class="dp-section-label">Outcomes & Value</div>
+      <div class="dp-section-title">What changes for your business</div>
+      <ul style="list-style:none; margin-top:16px; display:flex; flex-direction:column; gap:12px;">
+        <li style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#444; line-height:1.7;">
+          <i class="ti ti-circle-check" style="color:#e8452a; font-size:16px; flex-shrink:0; margin-top:2px;"></i>
+          <span>Engage AI is now a <strong>complete communication platform</strong> — chat and voice, handled in one place.</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#444; line-height:1.7;">
+          <i class="ti ti-circle-check" style="color:#e8452a; font-size:16px; flex-shrink:0; margin-top:2px;"></i>
+          <span>Customers receive calls from a <strong>number they already recognise</strong> — no spam flags, no blocked calls, no confusion.</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#444; line-height:1.7;">
+          <i class="ti ti-circle-check" style="color:#e8452a; font-size:16px; flex-shrink:0; margin-top:2px;"></i>
+          <span>Complex queries get resolved in <strong>one call</strong> — agents have the full chat context, so nothing needs to be repeated.</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#444; line-height:1.7;">
+          <i class="ti ti-circle-check" style="color:#e8452a; font-size:16px; flex-shrink:0; margin-top:2px;"></i>
+          <span>Every call — initiated, accepted, ended, transcribed — is <strong>captured inside the same chat thread</strong>. Nothing gets lost.</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#444; line-height:1.7;">
+          <i class="ti ti-circle-check" style="color:#e8452a; font-size:16px; flex-shrink:0; margin-top:2px;"></i>
+          <span>Consent-first calling means <strong>every call is expected and welcomed</strong> — better answer rates, fewer drop-offs, fully compliant.</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#444; line-height:1.7;">
+          <i class="ti ti-circle-check" style="color:#e8452a; font-size:16px; flex-shrink:0; margin-top:2px;"></i>
+          <span>Supervisors can <strong>review recordings and transcripts anytime</strong> — coach agents, handle escalations, stay fully accountable.</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#444; line-height:1.7;">
+          <i class="ti ti-circle-check" style="color:#e8452a; font-size:16px; flex-shrink:0; margin-top:2px;"></i>
+          <span>Transcripts work across <strong>Tamil, Hindi, Arabic, English and more</strong> — built for multilingual teams from day one.</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#444; line-height:1.7;">
+          <i class="ti ti-circle-check" style="color:#e8452a; font-size:16px; flex-shrink:0; margin-top:2px;"></i>
+          <span>Calling + consent + recording + transcription in one platform — a <strong>clear competitive advantage</strong> over text-only tools.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ══ SUBSCRIPTION ══ -->
+    <div class="dp-section">
+      <div class="dp-section-label">Subscription & Availability</div>
+      <div class="dp-section-title">Which plan includes this feature?</div>
+      <div class="dp-sub-grid">
+        <div class="dp-sub-card">
+          <div class="dp-sub-name">Starter</div>
+          <div class="dp-sub-status no"><i class="ti ti-x"></i> Not included</div>
+          <div class="dp-sub-note">Basic messaging features only</div>
+        </div>
+        <div class="dp-sub-card">
+          <div class="dp-sub-name">Growth</div>
+          <div class="dp-sub-status no"><i class="ti ti-x"></i> Not included</div>
+          <div class="dp-sub-note">Text-based channels only</div>
+        </div>
+        <div class="dp-sub-card active">
+          <div class="dp-sub-badge">Included</div>
+          <div class="dp-sub-name">Advantage & Above</div>
+          <div class="dp-sub-status yes"><i class="ti ti-check"></i> Fully included</div>
+          <div class="dp-sub-note">Calling, permission tracking, recording, transcription & translation all included</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ COST BREAKDOWN ══ -->
+    <div class="dp-section">
+      <div class="dp-section-label">Cost Breakdown</div>
+      <div class="dp-section-title">Is there any additional cost?</div>
+      <div class="dp-cost-row">
+        <div class="dp-cost-card">
+          <div class="dp-cost-label"><i class="ti ti-check"></i> Platform feature</div>
+          <div class="dp-cost-value">Included</div>
+          <div class="dp-cost-desc">Dashboard calling, call history, permission tracking, recordings, and transcripts — all included in Advantage plan. No extra charge.</div>
+        </div>
+        <div class="dp-cost-card highlight">
+          <div class="dp-cost-label" style="color:#e8452a;"><i class="ti ti-alert-triangle"></i> Meta / WhatsApp fees</div>
+          <div class="dp-cost-value orange">Per call</div>
+          <div class="dp-cost-desc">Meta charges a per-minute rate for WhatsApp Business calls. Billed directly by Meta as part of your WhatsApp Business API usage — separate from your iNextLabs plan.</div>
+        </div>
+        <div class="dp-cost-card">
+          <div class="dp-cost-label"><i class="ti ti-microphone-2"></i> Transcription</div>
+          <div class="dp-cost-value">Included</div>
+          <div class="dp-cost-desc">Post-call transcription and multi-language translation are included. Azure Speech processing costs are absorbed within the Advantage plan.</div>
+        </div>
+        <div class="dp-cost-card">
+          <div class="dp-cost-label"><i class="ti ti-database"></i> Recording storage</div>
+          <div class="dp-cost-value">Included</div>
+          <div class="dp-cost-desc">Call recordings stored securely in Azure Blob Storage. Included with your plan — agents and supervisors can access and replay anytime.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CTA STRIP ══ -->
+  <div class="dp-cta-strip">
+    <div>
+      <div class="dp-cta-text">Want to see this in action?</div>
+      <div class="dp-cta-sub">Reach out to the product team for a live walkthrough</div>
+    </div>
+    <!-- EDIT: Link to next feature detail page -->
+    <a class="dp-cta-btn" href="inflow-memory.html">
+      <i class="ti ti-sparkles"></i> Next: inFlow Memory →
+    </a>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="dp-footer">
+    <div class="dp-footer-text">iNextLabs · Engage AI · May 2026 · Feature Documentation</div>
+    <div class="dp-footer-right">
+      <span class="dp-footer-chip">WhatsApp</span>
+      <span class="dp-footer-chip">Voice</span>
+      <span class="dp-footer-chip">Advantage+</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
