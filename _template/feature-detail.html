@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ✏️ EDIT: "Feature Name — iNextLabs Engage AI · Month Year" -->
+  <title>Feature Name — iNextLabs Engage AI · Month Year</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Fustat', 'Inter', sans-serif; background: #f5f5f7; min-height: 100vh; padding: 32px 16px; }
+    .dp { max-width: 680px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e5e5e5; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .dp-nav { background: #fff; border-bottom: 1px solid #efefef; padding: 14px 36px; display: flex; align-items: center; justify-content: space-between; }
+    .dp-nav-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #aaa; cursor: pointer; text-decoration: none; transition: color 0.15s; font-family: 'Fustat', sans-serif; }
+    .dp-nav-back:hover { color: #e8452a; }
+    .dp-nav-back i { font-size: 14px; }
+    .dp-nav-badge { font-size: 11px; font-weight: 700; background: #fff2ef; color: #e8452a; border: 1px solid #fac9be; border-radius: 100px; padding: 3px 10px; }
+    .dp-hero { background: #ffffff; border-top: 3px solid #e8452a; border-bottom: 1px solid #efefef; padding: 40px 36px 36px; position: relative; overflow: hidden; }
+    .dp-hero::before { content: ''; position: absolute; top: -60px; right: -40px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(232,69,42,0.06) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
+    .dp-hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #e8452a; margin-bottom: 14px; }
+    .dp-hero-title { font-size: 34px; font-weight: 800; color: #1a1a1a; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 12px; position: relative; z-index: 1; }
+    .dp-hero-desc { font-size: 14px; color: #666; line-height: 1.7; max-width: 500px; position: relative; z-index: 1; }
+    .dp-hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; position: relative; z-index: 1; }
+    .dp-meta-chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; background: #f5f5f7; border: 1px solid #e5e5e5; color: #888; border-radius: 100px; padding: 5px 12px; }
+    .dp-meta-chip i { font-size: 12px; }
+    .dp-meta-chip.lit { background: #fff2ef; border-color: #fac9be; color: #e8452a; }
+    .dp-body { padding: 32px 36px; background: #fff; }
+    .dp-section { margin-bottom: 32px; }
+    .dp-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #ccc; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .dp-section-label::after { content: ''; flex: 1; height: 1px; background: #f0f0f0; }
+    .dp-section-title { font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; letter-spacing: -0.015em; }
+    .dp-section-body { font-size: 13.5px; color: #666; line-height: 1.75; }
+    .dp-section-body strong { color: #333; font-weight: 700; }
+    .dp-before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    .dp-ba-card { border-radius: 12px; padding: 20px; }
+    .dp-ba-card.before { background: #fff8f7; border: 1px solid #fde0d9; }
+    .dp-ba-card.after { background: #f4fff8; border: 1px solid #bbf7d0; }
+    .dp-ba-header { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 14px; }
+    .dp-ba-header.before { color: #e8452a; }
+    .dp-ba-header.after { color: #16a34a; }
+    .dp-ba-header i { font-size: 14px; }
+    .dp-ba-list { list-style: none; }
+    .dp-ba-list li { font-size: 12.5px; color: #666; padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 8px; line-height: 1.55; }
+    .dp-ba-list li:last-child { border-bottom: none; }
+    .dp-ba-list li i { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .dp-ba-list.before-list li i { color: #e8452a; }
+    .dp-ba-list.after-list li i { color: #16a34a; }
+    .dp-callout { background: #fafafa; border: 1px solid #efefef; border-left: 3px solid #e8452a; border-radius: 10px; padding: 18px 20px; margin-top: 14px; }
+    .dp-callout-title { font-size: 13px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; display: flex; align-items: center; gap: 7px; }
+    .dp-callout-title i { color: #e8452a; font-size: 15px; }
+    .dp-callout-body { font-size: 12.5px; color: #888; line-height: 1.7; }
+    .dp-callout-body strong { color: #555; font-weight: 700; }
+    .dp-steps { margin-top: 16px; }
+    .dp-step { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #f5f5f5; }
+    .dp-step:last-child { border-bottom: none; }
+    .dp-step-num { width: 32px; height: 32px; flex-shrink: 0; background: #e8452a; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; }
+    .dp-step-title { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+    .dp-step-desc { font-size: 12.5px; color: #888; line-height: 1.65; }
+    .dp-step-desc strong { color: #555; font-weight: 700; }
+    .dp-screenshot { background: #f7f7f7; border: 1.5px dashed #ddd; border-radius: 12px; padding: 32px 20px; text-align: center; margin-top: 16px; }
+    .dp-screenshot i { font-size: 30px; color: #ccc; display: block; margin-bottom: 10px; }
+    .dp-screenshot-label { font-size: 13px; color: #bbb; font-weight: 600; }
+    .dp-screenshot-sub { font-size: 11px; color: #ccc; margin-top: 4px; }
+    .dp-outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    .dp-outcome-card { background: #fafafa; border: 1px solid #efefef; border-radius: 12px; padding: 20px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .dp-outcome-card:hover { border-color: #fac9be; box-shadow: 0 2px 12px rgba(232,69,42,0.06); }
+    .dp-outcome-icon { width: 38px; height: 38px; background: #fff2ef; border: 1px solid #fac9be; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .dp-outcome-icon i { color: #e8452a; font-size: 18px; }
+    .dp-outcome-title { font-size: 13px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
+    .dp-outcome-desc { font-size: 12px; color: #888; line-height: 1.65; }
+    .dp-outcome-desc strong { color: #555; font-weight: 700; }
+    .dp-sub-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 16px; }
+    .dp-sub-card { border: 1px solid #efefef; border-radius: 12px; padding: 18px 16px; text-align: center; background: #fafafa; }
+    .dp-sub-card.active { border: 2px solid #e8452a; background: #fff2ef; }
+    .dp-sub-badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; background: #e8452a; color: #fff; border-radius: 100px; padding: 2px 8px; margin-bottom: 10px; }
+    .dp-sub-name { font-size: 14px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
+    .dp-sub-status { font-size: 12px; margin-top: 8px; font-weight: 600; }
+    .dp-sub-status.yes { color: #16a34a; }
+    .dp-sub-status.no { color: #ccc; }
+    .dp-sub-status i { font-size: 13px; vertical-align: -2px; margin-right: 3px; }
+    .dp-sub-note { font-size: 11px; color: #aaa; margin-top: 6px; line-height: 1.5; }
+    .dp-cost-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    .dp-cost-card { border: 1px solid #efefef; border-radius: 12px; padding: 18px 20px; background: #fafafa; }
+    .dp-cost-card.highlight { border-color: #fac9be; background: #fff8f7; }
+    .dp-cost-label { font-size: 11px; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+    .dp-cost-label i { font-size: 13px; }
+    .dp-cost-value { font-size: 18px; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
+    .dp-cost-value.orange { color: #e8452a; }
+    .dp-cost-desc { font-size: 12px; color: #aaa; line-height: 1.55; }
+    .dp-cta-strip { background: #f5f5f7; border-top: 1px solid #efefef; padding: 28px 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .dp-cta-text { font-size: 15px; font-weight: 800; color: #1a1a1a; }
+    .dp-cta-sub { font-size: 12px; color: #888; margin-top: 2px; }
+    .dp-cta-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: #fff; background: #e8452a; border: none; border-radius: 100px; padding: 10px 22px; cursor: pointer; font-family: 'Fustat', sans-serif; text-decoration: none; transition: background 0.15s; white-space: nowrap; }
+    .dp-cta-btn:hover { background: #d43d23; }
+    .dp-footer { background: #f5f5f7; border-top: 1px solid #efefef; padding: 14px 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .dp-footer-text { font-size: 11px; color: #bbb; }
+    .dp-footer-right { display: flex; gap: 6px; }
+    .dp-footer-chip { font-size: 11px; color: #bbb; border: 1px solid #e5e5e5; border-radius: 100px; padding: 3px 10px; }
+  </style>
+</head>
+<body>
+<div class="dp">
+  <div class="dp-nav">
+    <a class="dp-nav-back" href="index.html"><i class="ti ti-arrow-left"></i> Back to Newsletter</a>
+    <span class="dp-nav-badge">Category · Tag<!-- ✏️ --></span>
+  </div>
+  <div class="dp-hero">
+    <div class="dp-hero-tag"><i class="ti ti-sparkles"></i><!-- ✏️ icon --> Feature Deep Dive</div>
+    <div class="dp-hero-title">Feature<br>Name Here<!-- ✏️ --></div>
+    <div class="dp-hero-desc">Describe the feature in 1–2 sentences.<!-- ✏️ --></div>
+    <div class="dp-hero-meta">
+      <span class="dp-meta-chip lit"><i class="ti ti-circle-check"></i> Now Live</span>
+      <span class="dp-meta-chip"><i class="ti ti-calendar"></i> Shipped Month Year<!-- ✏️ --></span>
+      <span class="dp-meta-chip"><i class="ti ti-users"></i> Sales · Support · HR<!-- ✏️ --></span>
+    </div>
+  </div>
+  <div class="dp-body">
+    <div class="dp-section">
+      <div class="dp-section-label">The Problem We're Solving</div>
+      <div class="dp-section-title">Describe the pain point<!-- ✏️ --></div>
+      <div class="dp-section-body">Explain the problem.<!-- ✏️ --></div>
+      <div class="dp-before-after">
+        <div class="dp-ba-card before">
+          <div class="dp-ba-header before"><i class="ti ti-x"></i> Before</div>
+          <ul class="dp-ba-list before-list">
+            <li><i class="ti ti-x"></i> Problem point 1<!-- ✏️ --></li>
+            <li><i class="ti ti-x"></i> Problem point 2</li>
+            <li><i class="ti ti-x"></i> Problem point 3</li>
+            <li><i class="ti ti-x"></i> Problem point 4</li>
+          </ul>
+        </div>
+        <div class="dp-ba-card after">
+          <div class="dp-ba-header after"><i class="ti ti-check"></i> Now with [Feature]<!-- ✏️ --></div>
+          <ul class="dp-ba-list after-list">
+            <li><i class="ti ti-check"></i> Solution point 1<!-- ✏️ --></li>
+            <li><i class="ti ti-check"></i> Solution point 2</li>
+            <li><i class="ti ti-check"></i> Solution point 3</li>
+            <li><i class="ti ti-check"></i> Solution point 4</li>
+          </ul>
+        </div>
+      </div>
+      <div class="dp-callout">
+        <div class="dp-callout-title"><i class="ti ti-info-circle"></i> Key thing to know<!-- ✏️ --></div>
+        <div class="dp-callout-body">Add a clarifying note here.<!-- ✏️ --></div>
+      </div>
+    </div>
+    <div class="dp-section">
+      <div class="dp-section-label">How It Works</div>
+      <div class="dp-section-title">Step-by-step: how [Feature] works<!-- ✏️ --></div>
+      <div class="dp-steps">
+        <div class="dp-step"><div class="dp-step-num">1</div><div><div class="dp-step-title">Step one<!-- ✏️ --></div><div class="dp-step-desc">Describe step.<!-- ✏️ --></div></div></div>
+        <div class="dp-step"><div class="dp-step-num">2</div><div><div class="dp-step-title">Step two<!-- ✏️ --></div><div class="dp-step-desc">Describe step.<!-- ✏️ --></div></div></div>
+        <div class="dp-step"><div class="dp-step-num">3</div><div><div class="dp-step-title">Step three<!-- ✏️ --></div><div class="dp-step-desc">Describe step.<!-- ✏️ --></div></div></div>
+      </div>
+    </div>
+    <div class="dp-section">
+      <div class="dp-section-label">Screenshots</div>
+      <!-- Replace with: <img src="screenshots/main.png" style="width:100%;border-radius:12px;margin-top:16px;" alt="Description"> -->
+      <div class="dp-screenshot"><i class="ti ti-device-desktop"></i><div class="dp-screenshot-label">Main screenshot<!-- ✏️ --></div><div class="dp-screenshot-sub">Replace with img tag</div></div>
+    </div>
+    <div class="dp-section">
+      <div class="dp-section-label">Outcomes &amp; Value</div>
+      <div class="dp-section-title">What this feature unlocks<!-- ✏️ --></div>
+      <div class="dp-outcome-grid">
+        <div class="dp-outcome-card"><div class="dp-outcome-icon"><i class="ti ti-bolt"></i></div><div class="dp-outcome-title">Outcome 1<!-- ✏️ --></div><div class="dp-outcome-desc">Description.<!-- ✏️ --></div></div>
+        <div class="dp-outcome-card"><div class="dp-outcome-icon"><i class="ti ti-heart-handshake"></i></div><div class="dp-outcome-title">Outcome 2<!-- ✏️ --></div><div class="dp-outcome-desc">Description.<!-- ✏️ --></div></div>
+        <div class="dp-outcome-card"><div class="dp-outcome-icon"><i class="ti ti-shield-check"></i></div><div class="dp-outcome-title">Outcome 3<!-- ✏️ --></div><div class="dp-outcome-desc">Description.<!-- ✏️ --></div></div>
+        <div class="dp-outcome-card"><div class="dp-outcome-icon"><i class="ti ti-eye"></i></div><div class="dp-outcome-title">Outcome 4<!-- ✏️ --></div><div class="dp-outcome-desc">Description.<!-- ✏️ --></div></div>
+      </div>
+    </div>
+    <div class="dp-section">
+      <div class="dp-section-label">Subscription &amp; Availability</div>
+      <div class="dp-section-title">Which plan includes this feature?</div>
+      <div class="dp-sub-grid">
+        <div class="dp-sub-card"><div class="dp-sub-name">Starter</div><div class="dp-sub-status no"><i class="ti ti-x"></i> Not included</div><div class="dp-sub-note">Basic features only</div></div>
+        <div class="dp-sub-card"><div class="dp-sub-name">Growth</div><div class="dp-sub-status no"><i class="ti ti-x"></i> Not included</div><div class="dp-sub-note">✏️ Add note</div></div>
+        <div class="dp-sub-card active"><div class="dp-sub-badge">Included</div><div class="dp-sub-name">Advantage &amp; Above</div><div class="dp-sub-status yes"><i class="ti ti-check"></i> Fully included</div><div class="dp-sub-note">✏️ Describe inclusions</div></div>
+      </div>
+    </div>
+    <div class="dp-section">
+      <div class="dp-section-label">Demo</div>
+      <!-- Replace with: <iframe src="https://www.loom.com/embed/ID" width="100%" height="360" frameborder="0" style="border-radius:12px;margin-top:16px;" allowfullscreen></iframe> -->
+      <div class="dp-screenshot" style="padding:40px 20px;"><i class="ti ti-player-play"></i><div class="dp-screenshot-label">Feature Demo Video</div><div class="dp-screenshot-sub">Paste Loom or YouTube embed here</div></div>
+    </div>
+  </div>
+  <div class="dp-cta-strip">
+    <div><div class="dp-cta-text">Want to see this in action?</div><div class="dp-cta-sub">Reach out to the product team for a live walkthrough</div></div>
+    <a class="dp-cta-btn" href="index.html"><i class="ti ti-arrow-left"></i> Back to Newsletter</a>
+  </div>
+  <div class="dp-footer">
+    <div class="dp-footer-text">iNextLabs · Engage AI · Month Year · Feature Documentation<!-- ✏️ --></div>
+    <div class="dp-footer-right"><span class="dp-footer-chip">Tag 1<!-- ✏️ --></span><span class="dp-footer-chip">Tag 2</span><span class="dp-footer-chip">Plan</span></div>
+  </div>
+</div>
+</body>
+</html>

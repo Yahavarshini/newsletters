@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- EDIT: Update title with the correct month/year -->
+  <title>iNextLabs · Engage AI Newsletter · May 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Fustat', 'Inter', sans-serif; background: #f5f5f7; min-height: 100vh; padding: 32px 16px; }
+    .nl { max-width: 680px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e5e5e5; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .nl-header { background: #ffffff; padding: 20px 36px; border-bottom: 1px solid #efefef; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .nl-logo { display: flex; align-items: center; gap: 10px; }
+    .nl-logo-icon { width: 38px; height: 38px; background: #e8452a; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .nl-logo-icon i { color: #ffffff; font-size: 20px; }
+    .nl-logo-name { font-size: 18px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.02em; }
+    .nl-logo-product { font-size: 10px; color: #aaa; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; margin-top: 1px; }
+    .nl-header-right { display: flex; align-items: center; gap: 8px; }
+    .nl-badge { font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 100px; }
+    .nl-badge-month { background: #fff2ef; color: #e8452a; border: 1px solid #fac9be; }
+    .nl-badge-issue { background: #f5f5f5; color: #999; border: 1px solid #e8e8e8; }
+    .nl-hero { background: #ffffff; border-top: 3px solid #e8452a; border-bottom: 1px solid #efefef; padding: 40px 36px 36px; position: relative; overflow: hidden; }
+    .nl-hero::before { content: ''; position: absolute; top: -70px; right: -70px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(232,69,42,0.06) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
+    .nl-hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #e8452a; margin-bottom: 12px; }
+    .nl-hero-title { font-size: 32px; font-weight: 800; color: #1a1a1a; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 10px; position: relative; z-index: 1; }
+    .nl-hero-sub { font-size: 14px; color: #666; font-weight: 400; line-height: 1.65; max-width: 460px; position: relative; z-index: 1; }
+    .nl-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #efefef; border-bottom: 1px solid #efefef; }
+    .nl-stat { background: #fafafa; padding: 18px 20px; text-align: center; }
+    .nl-stat-num { font-size: 26px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.02em; }
+    .nl-stat-num.accent { color: #e8452a; }
+    .nl-stat-label { font-size: 11px; color: #aaa; margin-top: 3px; font-weight: 400; }
+    .nl-body { background: #ffffff; padding: 28px 36px; }
+    .nl-section-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #bbb; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .nl-section-eyebrow::after { content: ''; flex: 1; height: 1px; background: #f0f0f0; }
+    .nl-card { background: #fafafa; border: 1px solid #efefef; border-radius: 14px; padding: 24px; margin-bottom: 14px; display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.15s, box-shadow 0.15s; }
+    .nl-card:hover { border-color: #fac9be; box-shadow: 0 2px 16px rgba(232,69,42,0.06); }
+    .nl-card-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #fff2ef; border: 1px solid #fac9be; }
+    .nl-card-icon i { color: #e8452a; font-size: 24px; }
+    .nl-card-body { flex: 1; min-width: 0; }
+    .nl-card-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #e8452a; margin-bottom: 5px; }
+    .nl-card-title { font-size: 17px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; letter-spacing: -0.01em; line-height: 1.3; }
+    .nl-card-desc { font-size: 13px; color: #666; line-height: 1.75; margin-bottom: 14px; }
+    .nl-card-desc strong { color: #333; font-weight: 700; }
+    .nl-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .nl-pill { font-size: 11px; color: #888; background: #fff; border: 1px solid #e8e8e8; border-radius: 100px; padding: 4px 10px; display: flex; align-items: center; gap: 5px; }
+    .nl-pill i { font-size: 12px; color: #ccc; }
+    .nl-cta-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #ffffff; background: #e8452a; border: none; border-radius: 100px; padding: 9px 18px; cursor: pointer; font-family: 'Fustat', sans-serif; text-decoration: none; transition: background 0.15s, transform 0.1s; }
+    .nl-cta-btn:hover { background: #d43d23; transform: translateY(-1px); }
+    .nl-cta-btn i { font-size: 13px; }
+    .nl-divider { height: 1px; background: #f0f0f0; margin: 20px 0; }
+    .nl-coming { background: #fafafa; border: 1px solid #efefef; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; }
+    .nl-coming-icon { width: 38px; height: 38px; background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .nl-coming-icon i { color: #bbb; font-size: 18px; }
+    .nl-coming-text { font-size: 12px; color: #aaa; line-height: 1.65; }
+    .nl-coming-text strong { color: #888; font-weight: 700; }
+    .nl-footer { background: #f5f5f7; border-top: 1px solid #efefef; padding: 20px 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .nl-footer-left { font-size: 12px; color: #888; line-height: 1.6; }
+    .nl-footer-left strong { color: #555; font-weight: 600; }
+    .nl-footer-right { display: flex; gap: 6px; }
+    .nl-footer-tag { font-size: 11px; color: #aaa; border: 1px solid #ddd; border-radius: 100px; padding: 3px 10px; }
+    .back-top { text-align: center; padding: 10px; background: #f5f5f7; }
+    .back-top a { font-size: 11px; color: #bbb; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+    .back-top a:hover { color: #e8452a; }
+  </style>
+</head>
+<body>
+<a id="top"></a>
+<div class="nl">
+  <div class="nl-header">
+    <div class="nl-logo">
+      <div class="nl-logo-icon"><i class="ti ti-brain"></i></div>
+      <div>
+        <div class="nl-logo-name">iNextLabs</div>
+        <div class="nl-logo-product">inFlow · EngageAI</div>
+      </div>
+    </div>
+    <div class="nl-header-right">
+      <span class="nl-badge nl-badge-month">May 2026</span>
+      <span class="nl-badge nl-badge-issue">Issue #01</span>
+    </div>
+  </div>
+  <div class="nl-hero">
+    <div class="nl-hero-eyebrow">Product Newsletter</div>
+    <div class="nl-hero-title">What we shipped<br>this month</div>
+    <div class="nl-hero-sub">A monthly walkthrough of new Engage AI features — written for implementation, sales, marketing, and HR teams.</div>
+  </div>
+  <div class="nl-stats">
+    <div class="nl-stat"><div class="nl-stat-num accent">2</div><div class="nl-stat-label">Features shipped</div></div>
+    <div class="nl-stat"><div class="nl-stat-num">4+</div><div class="nl-stat-label">Teams benefited</div></div>
+    <div class="nl-stat"><div class="nl-stat-num accent" style="font-size:20px;">↑ CX</div><div class="nl-stat-label">Customer experience</div></div>
+  </div>
+  <div class="nl-body">
+    <div class="nl-section-eyebrow">New this month</div>
+    <div class="nl-card">
+      <div class="nl-card-icon"><i class="ti ti-phone-call"></i></div>
+      <div class="nl-card-body">
+        <div class="nl-card-tag">WhatsApp · Voice</div>
+        <div class="nl-card-title">WhatsApp Business Calling</div>
+        <div class="nl-card-desc">Agents can now <strong>call customers directly from the dashboard</strong> over WhatsApp — no separate phone, no extra hardware. Every call is <strong>automatically recorded</strong> and a searchable transcript is generated afterward with speaker attribution, so nothing gets lost once a call ends.</div>
+        <div class="nl-pills">
+          <span class="nl-pill"><i class="ti ti-shield-check"></i> Consent-gated</span>
+          <span class="nl-pill"><i class="ti ti-microphone-2"></i> Auto-recorded</span>
+          <span class="nl-pill"><i class="ti ti-file-text"></i> Post-call transcript</span>
+          <span class="nl-pill"><i class="ti ti-language"></i> Multi-language</span>
+        </div>
+        <a class="nl-cta-btn" href="whatsapp-calling.html"><i class="ti ti-arrow-right"></i> See full walkthrough</a>
+      </div>
+    </div>
+    <div class="nl-card">
+      <div class="nl-card-icon"><i class="ti ti-sparkles"></i></div>
+      <div class="nl-card-body">
+        <div class="nl-card-tag">AI · Memory</div>
+        <div class="nl-card-title">inFlow Memory — AI That Remembers</div>
+        <div class="nl-card-desc">Until now, every AI conversation started from scratch — customers had to repeat themselves every time. <strong>inFlow Memory gives the AI the ability to remember</strong> key details from past conversations: preferences, history, and context. Every future interaction feels natural and personalised.</div>
+        <div class="nl-pills">
+          <span class="nl-pill"><i class="ti ti-repeat"></i> Cross-session memory</span>
+          <span class="nl-pill"><i class="ti ti-user-heart"></i> Personalised AI</span>
+          <span class="nl-pill"><i class="ti ti-settings"></i> Configurable per bot</span>
+          <span class="nl-pill"><i class="ti ti-lock"></i> Advantage+ plan</span>
+        </div>
+        <a class="nl-cta-btn" href="inflow-memory.html"><i class="ti ti-arrow-right"></i> See full walkthrough</a>
+      </div>
+    </div>
+    <div class="nl-divider"></div>
+    <div class="nl-section-eyebrow">On the horizon</div>
+    <div class="nl-coming">
+      <div class="nl-coming-icon"><i class="ti ti-clock-hour-4"></i></div>
+      <div class="nl-coming-text"><strong>Coming next:</strong> Inbound WhatsApp calling, live transcription during calls, bot-level memory controls, and deeper memory integration across support workflows.</div>
+    </div>
+  </div>
+  <div class="nl-footer">
+    <div class="nl-footer-left">Built by the <strong>iNextLabs Product Team</strong><br>Questions? Reach out on <strong>#product-updates</strong></div>
+    <div class="nl-footer-right"><span class="nl-footer-tag">Engage AI</span><span class="nl-footer-tag">Monthly</span></div>
+  </div>
+  <div class="back-top"><a href="#top"><i class="ti ti-arrow-up"></i> Back to top</a></div>
+</div>
+</body>
+</html>
