@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<!-- UPDATED: inline expand, smaller card, poster slot -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EngageAI · Product Newsletter · 2026 · v2</title>
+<meta name="description" content="EngageAI monthly product release digest — May 2026 features and beyond." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" />
+<style>
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Fustat', system-ui, sans-serif;
+  background: #07070b;
+  color: #f4f4f7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ── DESIGN TOKENS ── */
+:root {
+  --bg:       #07070b;
+  --s1:       #0e0e15;
+  --s2:       #13131c;
+  --border:   rgba(255,255,255,0.07);
+  --border-2: rgba(255,255,255,0.04);
+  --brand:    #e8452a;
+  --brand-2:  #ff6b4a;
+  --brand-dim:rgba(232,69,42,0.12);
+  --text:     #f4f4f7;
+  --muted:    #888898;
+  --dim:      #44444e;
+  --r:        18px;
+  --maxw:     1100px;
+}
+
+/* ── STICKY NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 62px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  background: rgba(7,7,11,0.8);
+  backdrop-filter: saturate(180%) blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 16px; font-weight: 700; letter-spacing: -0.01em;
+  cursor: pointer; user-select: none;
+}
+.nav-logo {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--brand); display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.nav-logo i { color: #fff; font-size: 16px; }
+.nav-product { font-size: 11px; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; margin-top: 1px; font-weight: 500; }
+.nav-bc {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--muted);
+}
+.nav-bc .bc-btn {
+  font-size: 13px; color: var(--muted); padding: 0;
+  transition: color 0.15s;
+}
+.nav-bc .bc-btn:hover { color: var(--text); }
+.nav-bc .bc-sep { font-size: 11px; opacity: 0.4; }
+.nav-bc .bc-current { color: var(--text); font-weight: 600; }
+
+/* ── VIEWS ── */
+.view { display: none; min-height: calc(100vh - 62px); padding-top: 62px; }
+.view.active { display: block; animation: fadeUp 0.36s cubic-bezier(0.4,0,0.2,1); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── INLINE FEATURES EXPAND ── */
+.features-expand {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;
+  opacity: 0;
+}
+.features-expand.open {
+  max-height: 2400px;
+  opacity: 1;
+}
+.fx-inner {
+  padding-top: 52px;
+}
+.fx-divider {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 36px;
+}
+.fx-divider-line { flex: 1; height: 1px; background: var(--border); }
+.fx-divider-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--brand); white-space: nowrap;
+}
+
+/* Poster + intro side-by-side */
+.fx-intro {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+@media (max-width: 720px) { .fx-intro { grid-template-columns: 1fr; } }
+.fx-intro-text {}
+.fx-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 8px; }
+.fx-title {
+  font-size: clamp(22px, 3vw, 32px); font-weight: 800; letter-spacing: -0.025em;
+  line-height: 1.1; margin-bottom: 10px;
+  background: linear-gradient(180deg, #fff 30%, #9090a8 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.fx-sub { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 440px; }
+.fx-poster {
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+  cursor: zoom-in;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.fx-poster:hover { transform: scale(1.02); box-shadow: 0 22px 60px rgba(0,0,0,0.65); }
+.fx-poster img { width: 100%; display: block; }
+
+/* ══════════════════════════════════
+   HUB VIEW
+══════════════════════════════════ */
+.hub { max-width: var(--maxw); margin: 0 auto; padding: 72px 24px 80px; }
+
+/* Hero */
+.hub-hero { text-align: center; max-width: 560px; margin: 0 auto 72px; position: relative; }
+.hub-hero::before {
+  content: '';
+  position: absolute; inset: -40px -80px -40px -80px; z-index: -1;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(232,69,42,0.16) 0%, transparent 70%);
+  filter: blur(28px); pointer-events: none;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 14px; border-radius: 999px;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+  color: var(--muted); font-size: 12px; font-weight: 500;
+  margin-bottom: 22px;
+}
+.eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 3px rgba(232,69,42,0.22);
+  animation: glow 2s infinite;
+}
+@keyframes glow {
+  0%,100% { box-shadow: 0 0 0 3px rgba(232,69,42,0.22); }
+  50%      { box-shadow: 0 0 0 8px rgba(232,69,42,0); }
+}
+.hub-title {
+  font-size: clamp(34px, 5.5vw, 58px); font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 16px;
+  background: linear-gradient(180deg, #fff 25%, #9090a8 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hub-title em {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-style: normal;
+}
+.hub-sub { font-size: 15px; color: var(--muted); line-height: 1.72; }
+
+/* Month cards */
+.months-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) { .months-row { grid-template-columns: 1fr; } }
+
+.mc {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  padding: 20px 18px;
+  position: relative; overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.mc.live {
+  border-color: rgba(232,69,42,0.45);
+  background: linear-gradient(160deg, rgba(232,69,42,0.1), rgba(232,69,42,0.025));
+  box-shadow: 0 4px 28px rgba(232,69,42,0.16);
+  cursor: pointer;
+}
+.mc.live:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 44px rgba(232,69,42,0.28);
+  border-color: rgba(232,69,42,0.65);
+}
+.mc.live.open {
+  border-color: rgba(232,69,42,0.6);
+  box-shadow: 0 6px 30px rgba(232,69,42,0.22);
+}
+.mc.live::after {
+  content: '';
+  position: absolute; top: -40px; right: -24px;
+  width: 130px; height: 130px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,69,42,0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+.mc.soon { opacity: 0.38; cursor: default; border-style: dashed; }
+
+.mc-m {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; margin-bottom: 5px;
+}
+.mc.live .mc-m { color: var(--brand); }
+.mc-y { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+.mc-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border);
+  margin-bottom: 7px;
+}
+.mc.live .mc-badge {
+  background: var(--brand); color: #fff; border-color: transparent;
+  box-shadow: 0 3px 10px rgba(232,69,42,0.35);
+}
+.live-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: #fff;
+  animation: glow 2s infinite;
+}
+.mc-desc { font-size: 11px; color: var(--muted); }
+.mc.live .mc-desc { color: rgba(232,69,42,0.65); }
+.mc-chevron {
+  position: absolute; right: 16px; bottom: 18px;
+  color: var(--brand); font-size: 14px;
+  opacity: 0.45; transition: transform 0.3s ease, opacity 0.2s;
+}
+.mc.live:hover .mc-chevron,
+.mc.live.open .mc-chevron { opacity: 1; }
+.mc.live.open .mc-chevron { transform: rotate(90deg); }
+
+/* ══════════════════════════════════
+   FEATURE DETAIL VIEW (back-btn shared)
+══════════════════════════════════ */
+.back-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  padding: 8px 16px; border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: 44px;
+}
+.back-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+.back-btn i { font-size: 14px; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 680px) { .features-grid { grid-template-columns: 1fr; } }
+
+.fc {
+  background: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+}
+.fc:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232,69,42,0.35);
+  box-shadow: 0 12px 40px rgba(232,69,42,0.1);
+}
+.fc::after {
+  content: '';
+  position: absolute; bottom: -50px; right: -30px;
+  width: 160px; height: 160px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,69,42,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.fc-num {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--brand); margin-bottom: 14px;
+}
+.fc-icon {
+  width: 50px; height: 50px; border-radius: 14px;
+  background: var(--brand-dim); border: 1px solid rgba(232,69,42,0.22);
+  display: grid; place-items: center; margin-bottom: 16px;
+}
+.fc-icon i { color: var(--brand); font-size: 24px; }
+.fc-title { font-size: 18px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 8px; line-height: 1.25; }
+.fc-desc { font-size: 13px; color: var(--muted); line-height: 1.72; margin-bottom: 18px; flex: 1; }
+.fc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+.fc-tag {
+  font-size: 11px; color: var(--dim); background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-2); border-radius: 999px; padding: 3px 10px;
+}
+.btn-explore {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 700; color: #fff;
+  background: var(--brand); border-radius: 999px;
+  padding: 10px 20px; align-self: flex-start;
+  transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+}
+.btn-explore:hover {
+  background: #d43d24;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(232,69,42,0.38);
+}
+.btn-explore i { font-size: 13px; }
+
+/* ══════════════════════════════════
+   FEATURE DETAIL VIEW
+══════════════════════════════════ */
+.fdv { max-width: 780px; margin: 0 auto; padding: 44px 24px 100px; }
+
+.fdv-toprow {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 40px;
+}
+.fdv-nav-btns { display: flex; gap: 8px; }
+.fdv-nav-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: color 0.15s, border-color 0.15s;
+}
+.fdv-nav-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+/* Feature hero card */
+.fdv-hero {
+  position: relative; padding: 38px 40px 36px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid var(--border); border-radius: 22px;
+  margin-bottom: 44px; overflow: hidden;
+}
+.fdv-hero::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,69,42,0.2) 0%, transparent 65%);
+  filter: blur(28px); pointer-events: none;
+}
+.fdv-hero > * { position: relative; z-index: 1; }
+@media (max-width: 500px) { .fdv-hero { padding: 26px 24px; } }
+
+.fdv-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 999px;
+  background: rgba(232,69,42,0.1); color: var(--brand-2);
+  border: 1px solid rgba(232,69,42,0.3); margin-bottom: 16px;
+}
+.fdv-title {
+  font-size: clamp(22px, 3.5vw, 36px); font-weight: 800;
+  letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 12px;
+}
+.fdv-sub {
+  font-size: 14px; color: var(--muted); line-height: 1.77; max-width: 600px;
+}
+.fdv-sub strong { color: var(--text); font-weight: 700; }
+
+/* Sections */
+.fdv-section { margin-bottom: 44px; }
+.fdv-sh {
+  font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.fdv-sh i { color: var(--brand); font-size: 17px; }
+.fdv-sh .se { font-size: 17px; line-height: 1; }
+.fdv-p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+.fdv-p strong { color: var(--text); font-weight: 700; }
+
+/* Bullets */
+.bullets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+@media (max-width: 560px) { .bullets { grid-template-columns: 1fr; } }
+.bl {
+  display: flex; gap: 10px; padding: 13px 15px;
+  background: rgba(255,255,255,0.025); border: 1px solid var(--border-2);
+  border-radius: 12px; align-items: flex-start;
+}
+.bl .ck {
+  flex: none; width: 21px; height: 21px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  display: grid; place-items: center; font-size: 10px; color: #fff; font-weight: 800;
+  margin-top: 1px;
+}
+.bl .ck.ar {
+  background: rgba(255,255,255,0.05); color: var(--brand);
+  border: 1px solid rgba(232,69,42,0.28); font-size: 12px;
+}
+.bl b { display: block; font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.bl span { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* Screenshots */
+.shot {
+  margin: 22px 0; border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border); background: var(--s1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+  cursor: zoom-in;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.shot:hover { transform: scale(1.014); box-shadow: 0 28px 80px rgba(0,0,0,0.65); }
+.shot img { width: 100%; display: block; }
+.shot-cap {
+  padding: 9px 16px 13px; font-size: 12px; color: var(--dim); font-style: italic; text-align: center;
+  border-top: 1px solid var(--border-2);
+}
+.shot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+@media (max-width: 560px) { .shot-grid { grid-template-columns: 1fr; } }
+.shot-grid .shot { margin: 0; }
+
+/* Placeholder */
+.shot-ph {
+  margin: 22px 0; padding: 36px 20px; border-radius: 16px;
+  border: 1px dashed rgba(255,255,255,0.1); background: var(--s1);
+  text-align: center; color: var(--dim);
+}
+.shot-ph i { font-size: 28px; opacity: 0.35; display: block; margin-bottom: 8px; }
+.shot-ph p { font-size: 12px; opacity: 0.45; }
+
+/* Color chips */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+.chip { padding: 5px 13px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid; }
+.chip.rose   { background: rgba(244,63,94,.1);  color: #fb7185; border-color: rgba(244,63,94,.28); }
+.chip.red    { background: rgba(239,68,68,.1);  color: #f87171; border-color: rgba(239,68,68,.28); }
+.chip.amber  { background: rgba(245,158,11,.1); color: #fbbf24; border-color: rgba(245,158,11,.28); }
+.chip.yellow { background: rgba(234,179,8,.1);  color: #facc15; border-color: rgba(234,179,8,.28); }
+.chip.blue   { background: rgba(59,130,246,.1); color: #60a5fa; border-color: rgba(59,130,246,.28); }
+.chip.green  { background: rgba(34,197,94,.1);  color: #4ade80; border-color: rgba(34,197,94,.28); }
+.chip.ntrl   { background: rgba(148,163,184,.1);color: #cbd5e1; border-color: rgba(148,163,184,.28); }
+
+/* Value cards */
+.vcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+@media (max-width: 600px) { .vcards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 380px) { .vcards { grid-template-columns: 1fr; } }
+.vc {
+  padding: 18px; border-radius: 14px;
+  background: rgba(255,255,255,0.025); border: 1px solid var(--border-2);
+}
+.vc .vi { font-size: 20px; margin-bottom: 8px; color: var(--brand); }
+.vc .vi i { font-size: 20px; }
+.vc h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.vc p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* Impact banner */
+.impact {
+  margin-top: 48px; padding: 34px 40px; border-radius: var(--r);
+  background: linear-gradient(135deg, rgba(232,69,42,0.1), rgba(232,69,42,0.03));
+  border: 1px solid rgba(232,69,42,0.22); text-align: center;
+}
+.impact h3 { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+.impact p { font-size: 14px; color: var(--muted); max-width: 460px; margin: 0 auto; line-height: 1.7; }
+@media (max-width: 500px) { .impact { padding: 26px 24px; } }
+
+/* ── LIGHTBOX ── */
+.lb {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(4,4,8,0.94);
+  backdrop-filter: blur(10px);
+  display: none; align-items: center; justify-content: center; flex-direction: column;
+  padding: 24px;
+  cursor: zoom-out;
+}
+.lb.open { display: flex; animation: lbIn 0.22s ease; }
+@keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
+.lb figure { cursor: default; text-align: center; }
+.lb img {
+  max-width: min(92vw, 960px); max-height: 78vh;
+  object-fit: contain; border-radius: 12px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.8);
+}
+.lb figcaption { margin-top: 12px; font-size: 12px; color: var(--muted); font-style: italic; }
+.lb-x {
+  position: fixed; top: 18px; right: 22px;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); border: 1px solid var(--border);
+  font-size: 20px; display: grid; place-items: center;
+  transition: background 0.15s; color: #fff;
+}
+.lb-x:hover { background: rgba(255,255,255,0.16); }
+
+/* ── MAY INLINE EXPAND ── */
+.poster-wrap {
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border); margin-bottom: 20px;
+  background: var(--s1);
+}
+.poster-wrap img { width: 100%; display: block; }
+.poster-ph {
+  border-radius: 14px; border: 1px dashed rgba(255,255,255,0.1);
+  background: var(--s1); padding: 28px 20px; text-align: center;
+  color: var(--dim); margin-bottom: 20px;
+}
+.poster-ph i { font-size: 26px; opacity: 0.3; display: block; margin-bottom: 7px; }
+.poster-ph p { font-size: 11px; opacity: 0.4; }
+.feature-list { display: flex; flex-direction: column; gap: 10px; }
+.fl-item {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: 16px 18px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.fl-item:hover { border-color: rgba(232,69,42,0.3); box-shadow: 0 4px 18px rgba(232,69,42,0.07); }
+.fl-icon {
+  width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0;
+  background: var(--brand-dim); border: 1px solid rgba(232,69,42,0.2);
+  display: grid; place-items: center;
+}
+.fl-icon i { color: var(--brand); font-size: 19px; }
+.fl-body { flex: 1; min-width: 0; }
+.fl-num { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand); margin-bottom: 2px; }
+.fl-title { font-size: 14px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 3px; }
+.fl-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.fl-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.fl-tag { font-size: 10px; color: var(--dim); background: rgba(255,255,255,0.04); border: 1px solid var(--border-2); border-radius: 999px; padding: 2px 8px; }
+.fl-explore {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 700; color: #fff;
+  background: var(--brand); border-radius: 999px;
+  padding: 8px 16px; flex-shrink: 0; white-space: nowrap;
+  transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+}
+.fl-explore:hover { background: #d43d24; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(232,69,42,0.34); }
+.fl-explore i { font-size: 11px; }
+@media (max-width: 520px) { .fl-item { flex-wrap: wrap; } .fl-explore { width: 100%; justify-content: center; margin-top: 6px; } }
+.may-expand {
+  max-width: 680px;
+  margin: 0 auto;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease, margin-top 0.35s ease;
+  margin-top: 0;
+}
+.may-expand.open {
+  max-height: 3600px;
+  opacity: 1;
+  margin-top: 20px;
+}
+.may-expand-inner {
+  padding: 8px 0 16px;
+}
+.expand-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+  margin-bottom: 16px; padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.expand-kicker {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--brand); margin-bottom: 4px;
+}
+.expand-sub { font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
+.expand-count { font-size: 12px; color: var(--muted); font-weight: 500; }
+.may-poster {
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: zoom-in;
+  transition: transform 0.22s, box-shadow 0.22s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+  background: var(--s1);
+}
+.may-poster:hover { transform: scale(1.014); box-shadow: 0 16px 48px rgba(0,0,0,0.6); }
+.may-poster img { width: 100%; display: block; }
+
+/* Poster strip — 2-column grid for all 4 posters */
+.poster-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+@media (max-width: 500px) { .poster-strip { grid-template-columns: 1fr; } }
+
+/* HTML poster iframe embed — scales the 1200×675 canvas to fit the card */
+.poster-iframe-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+  background: #0b0b12;
+  cursor: pointer;
+  transition: transform 0.22s, box-shadow 0.22s;
+  padding-bottom: 56.25%; /* fallback 16:9, overwritten by JS */
+}
+.poster-iframe-wrap:hover { transform: scale(1.014); box-shadow: 0 16px 48px rgba(0,0,0,0.6); }
+.poster-iframe-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1200px;
+  height: 675px;
+  border: none;
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 22px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px;
+  font-size: 12px; color: var(--muted);
+}
+footer a:hover { color: var(--text); }
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <div class="nav-brand" onclick="showHub()">
+    <div class="nav-logo"><i class="ti ti-sparkles"></i></div>
+    <div>
+      <div>EngageAI</div>
+      <div class="nav-product">iNextLabs · Newsletter</div>
+    </div>
+  </div>
+  <div class="nav-bc" id="nav-bc"></div>
+</nav>
+
+<!-- ══════════════════════════════════
+     VIEW: HUB
+══════════════════════════════════ -->
+<div id="view-hub" class="view active">
+  <section class="hub">
+
+    <div class="hub-hero">
+      <div class="eyebrow"><span class="dot"></span>2026 Product Releases</div>
+      <h1 class="hub-title">EngageAI<br/><em>Product Newsletter</em></h1>
+      <p class="hub-sub">Monthly product release digests from the EngageAI team — features, enhancements, and a look at what's coming next.</p>
+    </div>
+
+    <div class="months-row">
+
+      <!-- May 2026 — LIVE -->
+      <div class="mc live" id="mc-may" onclick="toggleMay()">
+        <div class="mc-m">May</div>
+        <div class="mc-y">2026</div>
+        <div class="mc-badge"><span class="live-dot"></span>&nbsp;Live</div>
+        <div class="mc-desc">4 features shipped</div>
+        <i class="ti ti-chevron-right mc-chevron"></i>
+      </div>
+
+      <!-- June 2026 — SOON -->
+      <div class="mc soon">
+        <div class="mc-m">Jun</div>
+        <div class="mc-y">2026</div>
+        <div class="mc-badge">Coming Soon</div>
+        <div class="mc-desc">Stay tuned</div>
+      </div>
+
+      <!-- July 2026 — SOON -->
+      <div class="mc soon">
+        <div class="mc-m">Jul</div>
+        <div class="mc-y">2026</div>
+        <div class="mc-badge">Coming Soon</div>
+        <div class="mc-desc">Stay tuned</div>
+      </div>
+
+    </div><!-- /months-row -->
+
+    <!-- ── MAY 2026 INLINE EXPAND ── -->
+    <div class="may-expand" id="may-expand">
+      <div class="may-expand-inner">
+
+        <!-- Header -->
+        <div class="expand-header">
+          <div>
+            <div class="expand-kicker">May 2026 · Release Digest</div>
+            <div class="expand-sub">What shipped this month</div>
+          </div>
+          <div class="expand-count">4 features shipped</div>
+        </div>
+
+        <!-- Feature list — horizontal rows -->
+        <div class="feature-list">
+
+          <div class="fl-item">
+            <div class="fl-icon"><i class="ti ti-phone-call"></i></div>
+            <div class="fl-body">
+              <div class="fl-num">Feature 01</div>
+              <div class="fl-title">WhatsApp Calling</div>
+              <div class="fl-desc">Secure, consent-driven man-to-man voice calling with call logs, recordings, transcripts, and AI summaries — all inside your enterprise workflow.</div>
+              <div class="fl-tags">
+                <span class="fl-tag">Consent-driven</span>
+                <span class="fl-tag">Call Logs</span>
+                <span class="fl-tag">AI Summaries</span>
+              </div>
+            </div>
+            <button class="fl-explore" onclick="showFeature('whatsapp-calling')">Explore <i class="ti ti-arrow-right"></i></button>
+          </div>
+
+          <div class="fl-item">
+            <div class="fl-icon"><i class="ti ti-tags"></i></div>
+            <div class="fl-body">
+              <div class="fl-num">Feature 02</div>
+              <div class="fl-title">Smart Tag Management</div>
+              <div class="fl-desc">Organize and retrieve customer conversations instantly using contact and message-level tags with color coding and powerful search.</div>
+              <div class="fl-tags">
+                <span class="fl-tag">Contact Tags</span>
+                <span class="fl-tag">Message Tags</span>
+                <span class="fl-tag">Smart Search</span>
+              </div>
+            </div>
+            <button class="fl-explore" onclick="showFeature('smart-tags')">Explore <i class="ti ti-arrow-right"></i></button>
+          </div>
+
+          <div class="fl-item">
+            <div class="fl-icon"><i class="ti ti-shopping-cart"></i></div>
+            <div class="fl-body">
+              <div class="fl-num">Feature 03</div>
+              <div class="fl-title">Smart Ordering</div>
+              <div class="fl-desc">Turn WhatsApp, Instagram, and Messenger into a fully automated ordering engine — catalog, AI discovery, promotions, and delivery in one platform.</div>
+              <div class="fl-tags">
+                <span class="fl-tag">Unified Catalog</span>
+                <span class="fl-tag">AI Discovery</span>
+                <span class="fl-tag">Delivery Rules</span>
+              </div>
+            </div>
+            <button class="fl-explore" onclick="showFeature('smart-ordering')">Explore <i class="ti ti-arrow-right"></i></button>
+          </div>
+
+          <div class="fl-item">
+            <div class="fl-icon"><i class="ti ti-brain"></i></div>
+            <div class="fl-body">
+              <div class="fl-num">Feature 04</div>
+              <div class="fl-title">AI Configuration Hub</div>
+              <div class="fl-desc">Centralized command center to manage, configure, and govern all AI-powered capabilities with full model transparency and enterprise governance.</div>
+              <div class="fl-tags">
+                <span class="fl-tag">AI Governance</span>
+                <span class="fl-tag">Model Visibility</span>
+                <span class="fl-tag">Ask AI</span>
+              </div>
+            </div>
+            <button class="fl-explore" onclick="showFeature('ai-hub')">Explore <i class="ti ti-arrow-right"></i></button>
+          </div>
+
+        </div><!-- /feature-list -->
+      </div><!-- /may-expand-inner -->
+    </div><!-- /may-expand -->
+
+  </section>
+
+  <footer>
+    <span>© 2026 iNextLabs · EngageAI</span>
+    <a href="https://inextlabs.ai" target="_blank">inextlabs.ai ↗</a>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════
+     VIEW: FEATURE DETAIL
+══════════════════════════════════ -->
+<div id="view-feature" class="view">
+  <div class="fdv" id="fdv-body"><!-- rendered by JS --></div>
+  <footer>
+    <span>© 2026 iNextLabs · EngageAI</span>
+    <a href="https://inextlabs.ai" target="_blank">inextlabs.ai ↗</a>
+  </footer>
+</div>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lb" id="lb" onclick="closeLb()">
+  <button class="lb-x" onclick="closeLb()">×</button>
+  <figure onclick="event.stopPropagation()">
+    <img id="lb-img" src="" alt="" />
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+</div>
+
+<script>
+/* ─── DATA ─────────────────────────────────────────────────────── */
+
+const FEATURES = {
+
+  'whatsapp-calling': {
+    num: '01', prev: null, next: 'smart-tags',
+    badge: 'Feature 01 · Released',
+    title: 'WhatsApp Calling',
+    sub: 'Conversations are evolving. EngageAI now brings <strong>secure, consent-driven voice interactions</strong> directly into enterprise workflows — not just calling, but conversational engagement engineered for the future.',
+    render: () => `
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-circle-check"></i> What you can do today</div>
+        <div class="bullets">
+          ${bl('Outbound Calls from Platform','Initiate man-to-man calls directly from EngageAI')}
+          ${bl('Consent Management','Request and manage user permission before every call')}
+          ${bl('Complete Call Logs','Full history stored securely with audit trail')}
+          ${bl('Recordings & Playback','Revisit calls with crystal-clear audio playback')}
+          ${bl('Auto Transcripts','Searchable transcripts auto-generated from every call')}
+          ${bl('AI Call Summaries','Insights pushed directly to the support desk portal')}
+          ${bl('Conversational Continuity','Context flows across calls, chats, and channels')}
+          ${bl('Spam Throttling','Permission-based throttling prevents call abuse')}
+        </div>
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-lock"></i> Consent-Driven Permission Flow</div>
+        <p class="fdv-p">Before initiating any call, agents request customer consent through the platform. Customers choose <strong>Always Allow</strong>, <strong>Temporarily Allow</strong>, or <strong>Not at this time</strong> — privacy-first by design.</p>
+        ${shot('2026-05/Images/Whatsapp-call/Call_Permission_Request.png','Call Permission Request — agents request consent before initiating outbound calls')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-clipboard-list"></i> Call Requests & Call Logs</div>
+        <p class="fdv-p">Track every permission request and call with a full audit trail. Monitor answered, unanswered, and pending calls across the entire team.</p>
+        <div class="shot-grid">
+          ${shotRaw('2026-05/Images/Whatsapp-call/Logs_Call_Request.png','Call Requests — track permission states')}
+          ${shotRaw('2026-05/Images/Whatsapp-call/Call_Logs.png','Call Logs — full history with agent, duration and status')}
+        </div>
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-headset"></i> Support Desk Integration</div>
+        <p class="fdv-p">Call summaries and transcripts flow directly into the support desk portal — complete conversational context, no screen-switching required.</p>
+        ${shot('2026-05/Images/Whatsapp-call/Support_Desk_WhatsApp_Calling.png','Support Desk — WhatsApp call with recording playback and auto-generated transcript')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-road"></i> Coming Next on the Roadmap</div>
+        <div class="bullets">
+          ${ar('Man-to-Man Inbound Calling','Receive calls directly into the EngageAI portal')}
+          ${ar('AI Voice Responses','Handle high-volume voice flows automatically')}
+          ${ar('Intelligent Voice Workflows','Conversational, contextual voice journeys')}
+          ${ar('Fully Contextual AI Support','Unified across chat, voice, and AI channels')}
+        </div>
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-chart-bar"></i> Real-World Impact</div>
+        <div class="vcards">
+          ${vc('<i class="ti ti-building-hospital"></i>','Healthcare','Secure patient follow-ups with compliance and full conversational context.')}
+          ${vc('<i class="ti ti-building-bank"></i>','Banking','High-value interactions with consent-driven calling and audit trails.')}
+          ${vc('<i class="ti ti-target"></i>','Sales Teams','Improve conversion with direct, contextual voice outreach.')}
+          ${vc('<i class="ti ti-lock"></i>','Privacy-First','Enterprise-grade architecture built for regulatory compliance.')}
+          ${vc('<i class="ti ti-bolt"></i>','Enterprise Scale','Designed for high-volume concurrent call operations.')}
+          ${vc('<i class="ti ti-brain"></i>','AI-Powered','Auto-transcription and AI-generated call summaries on every call.')}
+        </div>
+      </div>
+
+      <div class="impact">
+        <h3>The future of conversations is being built now.</h3>
+        <p>Every interaction is smarter, faster, more personalized — and fully unified across chat, voice, and AI.</p>
+      </div>
+    `
+  },
+
+  'smart-tags': {
+    num: '02', prev: 'whatsapp-calling', next: 'smart-ordering',
+    badge: 'Feature 02 · Released',
+    title: 'Smart Tag Management',
+    sub: 'Managing customer interactions becomes significantly easier when teams can <strong>instantly identify important customers</strong>, classify conversations, and retrieve critical messages without searching through endless chat history.',
+    render: () => `
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-user"></i> Contact-Level Tags</div>
+        <p class="fdv-p">Contact tags are permanently associated with a customer profile and visible across all conversations — giving agents immediate context on every interaction.</p>
+        <div class="chips">
+          <span class="chip blue">VIP Customer</span>
+          <span class="chip amber">Premium Subscriber</span>
+          <span class="chip green">High Value Lead</span>
+          <span class="chip ntrl">Partner Account</span>
+          <span class="chip rose">Renewal Due</span>
+          <span class="chip red">Enterprise Customer</span>
+        </div>
+        ${shot('2026-05/Images/Tags/image.png','Contact Tags — customer profile tags visible across all conversations')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-message"></i> Message-Level Tags</div>
+        <p class="fdv-p">Applied to individual messages to highlight key actions or statuses. Click a tagged result to auto-navigate directly to that message in any conversation.</p>
+        <div class="chips">
+          <span class="chip rose">Follow-Up Required</span>
+          <span class="chip red">Escalated</span>
+          <span class="chip amber">Callback Requested</span>
+          <span class="chip green">Interested</span>
+          <span class="chip red">Emergency</span>
+          <span class="chip ntrl">Complaint</span>
+          <span class="chip yellow">Resolution Pending</span>
+        </div>
+        ${shot('2026-05/Images/Tags/image (1).png','Message Tags — applied to individual messages for instant context')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-palette"></i> Seven Color Categories</div>
+        <p class="fdv-p">Tags are assigned one of seven predefined color categories — making customer status and conversation priorities instantly recognizable at a glance, no screen-opening needed.</p>
+        <div class="chips">
+          <span class="chip rose">Rose</span>
+          <span class="chip red">Red</span>
+          <span class="chip amber">Amber</span>
+          <span class="chip yellow">Yellow</span>
+          <span class="chip blue">Blue</span>
+          <span class="chip green">Green</span>
+          <span class="chip ntrl">Neutral</span>
+        </div>
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-settings"></i> Centralized Tag Management Console</div>
+        <p class="fdv-p">Administrators manage all business tags from a single dedicated console. Create, color-code, edit, and retire tags as requirements evolve — standardized governance across all teams.</p>
+        <div class="bullets">
+          ${bl('Create & Maintain Tags','Define names, descriptions, and color indicators in one place')}
+          ${bl('Edit or Retire','Adapt tags as business requirements evolve')}
+          ${bl('Built-in Search','Quickly locate any tag across the full library')}
+          ${bl('Team Consistency','Standardized practices enforced across all departments')}
+        </div>
+        
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-search"></i> Powerful Filtering & Search</div>
+        <p class="fdv-p">The Agent Assist Portal includes enhanced filtering — find the right conversation in seconds using contact tags, message tags, keywords, or any combination.</p>
+        <div class="bullets">
+          ${bl('Contact-Based Filtering','Filter conversations by one or multiple contact tags')}
+          ${bl('Message Tag Discovery','Combine keyword + tag filtering across all conversations')}
+          ${bl('Auto-Navigate & Highlight','Jump directly to the tagged message in any conversation')}
+          ${bl('Combined Search','Mix tag and keyword search for precise contextual discovery')}
+        </div>
+        
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-chart-bar"></i> Business Value</div>
+        <div class="vcards">
+          ${vc('<i class="ti ti-bolt"></i>','Faster Identification','Instantly recognize important customers through persistent contact-level classifications.')}
+          ${vc('<i class="ti ti-eye"></i>','Operational Visibility','Surface critical messages and action items directly within conversations.')}
+          ${vc('<i class="ti ti-users"></i>','Team Consistency','Standardize categorization across departments with centrally managed tags.')}
+          ${vc('<i class="ti ti-search"></i>','Quicker Discovery','Locate customers, conversations, and messages using tag-powered search.')}
+          ${vc('<i class="ti ti-trending-up"></i>','Productivity','Reduce manual effort spent searching through long conversation histories.')}
+          ${vc('<i class="ti ti-trophy"></i>','Better Decisions','Surface critical context instantly and accelerate team decision-making.')}
+        </div>
+      </div>
+
+      <div class="impact">
+        <h3>Create. Classify. Search. Act.</h3>
+        <p>Everything your team needs to manage customer conversations more intelligently is now available through Smart Tag Management.</p>
+      </div>
+    `
+  },
+
+  'smart-ordering': {
+    num: '03', prev: 'smart-tags', next: 'ai-hub',
+    badge: 'Feature 03 · Released',
+    title: 'Smart Ordering',
+    sub: '<strong>EngageAI Smart Ordering</strong> transforms WhatsApp, Instagram, Facebook Messenger, and AI-powered chat into a fully automated digital ordering engine — complete control over products, availability, promotions, and delivery from one platform.',
+    render: () => `
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-package"></i> Unified Catalog</div>
+        <p class="fdv-p">Connect your existing <strong>Meta Commerce Catalog</strong> and instantly power conversational ordering. One source of truth — automatically synchronized across every channel.</p>
+        <div class="bullets">
+          ${bl('Real-Time Sync','Product info, images, pricing, variants, and inventory — always current')}
+          ${bl('One Source of Truth','Updates in Meta Commerce Manager reflect instantly across channels')}
+          ${bl('Cross-Channel Consistency','Same catalog powers WhatsApp, Instagram, and Messenger')}
+          ${bl('Zero Admin Overhead','No manual updates or duplication across multiple platforms')}
+        </div>
+        <div class="shot-grid">
+          ${shotRaw('2026-05/Images/Smart_ordering/Frame 28.png','Unified Catalog — product catalog sync')}
+          ${shotRaw('2026-05/Images/Smart_ordering/Frame 29.png','Catalog management — products, variants and availability')}
+        </div>
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-robot"></i> AI-Powered Product Discovery</div>
+        <p class="fdv-p">Customers ask naturally — the AI searches the synchronized catalog and presents the right recommendations instantly. No menu navigation, no friction.</p>
+        <div class="bullets">
+          ${bl('"Show me vegetarian pizzas"','AI finds and presents matching catalog items instantly')}
+          ${bl('"What desserts are available today?"','Real-time availability awareness included')}
+          ${bl('"Combo meals under SGD 20?"','Price-aware contextual search across the entire catalog')}
+          ${bl('"Which items are on promotion?"','Promotion-aware discovery updated in real-time')}
+        </div>
+        ${shot('2026-05/Images/Smart_ordering/image.png','AI Product Discovery — natural language product search in action')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-clock"></i> Service Availability Controls</div>
+        <p class="fdv-p">Configure independent schedules for pickup and delivery. One-click enable/disable for any situation. Customers are always clearly informed when ordering resumes.</p>
+        <div class="bullets">
+          ${bl('One-Click Activation','Enable or disable services instantly — no technical help needed')}
+          ${bl('Cut-Off Controls','Define last-order time before closing to protect operations')}
+          ${bl('Advanced Schedules','Per-day hours and timezone support for global operations')}
+          ${bl('Smart Communication','AI automatically informs customers of service windows')}
+        </div>
+        ${shot('2026-05/Images/Smart_ordering/image (1).png','Service Availability Controls — pickup and delivery schedule configuration')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-target"></i> Promotions & Discounts</div>
+        <p class="fdv-p">Business teams control promotions end-to-end — no developers required. Activate, pause, or modify any campaign instantly with full conflict governance.</p>
+        <div class="bullets">
+          ${bl('Order Value Discounts','Spend SGD 50 → 5% Off · Spend SGD 100 → 10% Off')}
+          ${bl('Weekday Campaigns','Monday Specials, Mid-Week, Weekend Promotions')}
+          ${bl('Flat Discounts','10% Off Entire Menu · 15% Off Pickup Orders')}
+          ${bl('Discount Governance','Caps, conflict rules, and promotion priority controls')}
+        </div>
+        ${shot('2026-05/Images/Smart_ordering/Frame 31.png','Promotions — campaign configuration and discount management')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-truck"></i> Delivery Rules for Profitability</div>
+        <p class="fdv-p">Define delivery policies at area level — each zone gets its own minimum order value and delivery fee, automatically applied at checkout.</p>
+        <div class="bullets">
+          ${bl('Delivery Zone Management','Configure zones like Marina Bay, Orchard, Downtown in minutes')}
+          ${bl('Area-Based Minimums','Marina Bay: SGD 25 · Downtown: SGD 40 · Remote: SGD 60')}
+          ${bl('Dynamic Charges','Marina Bay: SGD 5 · Orchard: SGD 8 · Jurong: SGD 10')}
+          ${bl('Auto-Calculated Checkout','Correct fees applied automatically — every single order')}
+        </div>
+        <div class="shot-grid">
+          ${shotRaw('2026-05/Images/Smart_ordering/Frame 32.png','Delivery zones — area configuration')}
+          ${shotRaw('2026-05/Images/Smart_ordering/image (2).png','Delivery rules — minimum order values and fees per zone')}
+        </div>
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-chart-bar"></i> Business Outcomes</div>
+        <div class="vcards">
+          ${vc('<i class="ti ti-trending-up"></i>','More Orders','Increase online order volume through always-on conversational ordering.')}
+          ${vc('<i class="ti ti-coin"></i>','Higher Value','Improve average order value with AI-powered product discovery.')}
+          ${vc('<i class="ti ti-settings"></i>','Less Overhead','Eliminate manual order management and operational bottlenecks.')}
+          ${vc('<i class="ti ti-target"></i>','Smarter Promos','Launch campaigns faster — no deployments, no dependencies.')}
+          ${vc('<i class="ti ti-truck"></i>','Better Margins','Optimize delivery profitability with area-based rules.')}
+          ${vc('<i class="ti ti-mood-smile"></i>','Better CX','Consistent, intelligent customer experience across every channel.')}
+        </div>
+      </div>
+
+      <div class="impact">
+        <h3>More than ordering. It's digital commerce operations.</h3>
+        <p>From catalog sync and AI discovery to promotions and delivery economics — every component works together as a single intelligent ordering ecosystem.</p>
+      </div>
+    `
+  },
+
+  'ai-hub': {
+    num: '04', prev: 'smart-ordering', next: null,
+    badge: 'Feature 04 · Released',
+    title: 'AI Configuration Hub',
+    sub: 'AI should feel <strong>powerful, transparent, and configurable</strong> — not just another feature. The AI Configuration Hub transforms AI from a background utility into a visible, configurable intelligence layer across the entire EngageAI platform.',
+    render: () => `
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-layout-dashboard"></i> Centralized AI Management</div>
+        <p class="fdv-p">All AI-powered capabilities organized under <strong>one unified experience</strong>. Admins gain a structured governance interface to manage the full AI stack without technical complexity.</p>
+        <div class="bullets">
+          ${bl('View All AI Features','Every AI-powered capability visible in one place')}
+          ${bl('Enable / Disable Instantly','Toggle capabilities without touching code or configs')}
+          ${bl('Feature-by-Feature Scale','Adopt AI incrementally — on your timeline, at your pace')}
+          ${bl('Enterprise Governance','Structured AI administration built for enterprise teams')}
+        </div>
+        ${shot('2026-05/Images/inflow-memory/image.png','AI Configuration Hub — all AI capabilities in one unified view')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-eye"></i> AI Model Transparency</div>
+        <p class="fdv-p">Users can now see exactly which AI provider, model, region, and inference configuration powers each feature. Transparency builds enterprise-grade trust in every AI interaction.</p>
+        <div class="bullets">
+          ${bl('Provider Visibility','See which AI provider powers each feature')}
+          ${bl('Model Details','View the exact model version actively in use')}
+          ${bl('Region & Inference','Regional hosting and inference configuration visible')}
+          ${bl('Output Preferences','Configure formatting and output behavior per feature')}
+        </div>
+        ${shot('2026-05/Images/inflow-memory/image (1).png','AI Model Transparency — provider, model, region and inference details')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-adjustments"></i> Deep Feature-Level Configuration</div>
+        <p class="fdv-p">Instead of fixed AI behavior, admins get granular control. <strong>Conversation Summarization</strong>, for example, can be configured to match your organization's exact workflow and tone.</p>
+        <div class="bullets">
+          ${bl('Summary Format','Choose Bullet or Paragraph output style')}
+          ${bl('Response Length','Control the verbosity of AI-generated outputs')}
+          ${bl('Prompt Style','Customize prompting behavior per use case')}
+          ${bl('AI Model Selection','Choose the right model for each specific feature')}
+          ${bl('Focus Areas','Define operational areas the AI should prioritize')}
+          ${bl('Regional Hosting','Configure AI inference region for compliance')}
+        </div>
+        ${shot('2026-05/Images/inflow-memory/ASKAI_Configuration_Updated.png','Feature-Level Configuration — Ask AI and Conversation Summarization settings')}
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-circle-check"></i> Current AI Capabilities</div>
+        <p class="fdv-p">Two powerful capabilities are available today, with more on the way as the hub continues to grow.</p>
+        <div class="bullets">
+          ${bl('Conversation Summarization','AI-generated summaries so agents instantly understand interactions without reviewing full chat histories')}
+          ${bl('Ask AI','Context-aware AI assistance that delivers intelligent responses using your knowledge base and support content')}
+        </div>
+        <p class="fdv-p" style="margin-top:14px">The AI Configuration Hub is architected to support a <strong>growing ecosystem of AI capabilities</strong> — this is only the beginning.</p>
+      </div>
+
+      <div class="fdv-section">
+        <div class="fdv-sh"><i class="ti ti-chart-bar"></i> Enterprise Value</div>
+        <div class="vcards">
+          ${vc('<i class="ti ti-trophy"></i>','Standardized AI','Consistent AI usage and behavior across all teams and workflows.')}
+          ${vc('<i class="ti ti-eye"></i>','Full Transparency','See exactly which models and configs power every AI feature.')}
+          ${vc('<i class="ti ti-bolt"></i>','Faster Operations','Reduce dependency on manual support workflows with intelligent AI.')}
+          ${vc('<i class="ti ti-lock"></i>','Trust in AI','Build confidence in AI outputs with full model visibility.')}
+          ${vc('<i class="ti ti-trending-up"></i>','Scalable','Prepared for future AI expansion without re-architecture.')}
+          ${vc('<i class="ti ti-adjustments"></i>','Flexible Control','Granular configuration that adapts AI to your business processes.')}
+        </div>
+      </div>
+
+      <div class="impact">
+        <h3>Welcome to the new AI Configuration Hub.</h3>
+        <p>Intelligent control, visibility, and customization — all in one place. The future of AI-powered support is not just automation. It's governance.</p>
+      </div>
+    `
+  }
+
+};
+
+/* ─── HELPERS ──────────────────────────────────────────────────── */
+
+function bl(t, d) {
+  return `<div class="bl"><span class="ck">✓</span><div><b>${t}</b><span>${d}</span></div></div>`;
+}
+function ar(t, d) {
+  return `<div class="bl"><span class="ck ar">→</span><div><b>${t}</b><span>${d}</span></div></div>`;
+}
+function vc(icon, t, d) {
+  return `<div class="vc"><div class="vi">${icon}</div><h4>${t}</h4><p>${d}</p></div>`;
+}
+function shot(src, cap) {
+  return `<div class="shot" onclick="openLb('${src}','${cap.replace(/'/g,"&#39;")}')">
+    <img src="${src}" alt="${cap}" loading="lazy" />
+    <div class="shot-cap">${cap}</div>
+  </div>`;
+}
+function shotRaw(src, cap) {
+  return `<div class="shot" onclick="openLb('${src}','${cap.replace(/'/g,"&#39;")}')">
+    <img src="${src}" alt="${cap}" loading="lazy" />
+    <div class="shot-cap">${cap}</div>
+  </div>`;
+}
+function ph(label) {
+  return `<div class="shot-ph"><i class="ti ti-photo"></i><p>${label}</p></div>`;
+}
+
+/* ─── NAVIGATION ───────────────────────────────────────────────── */
+
+const VIEWS = ['view-hub', 'view-feature'];
+
+function showView(id) {
+  VIEWS.forEach(v => document.getElementById(v).classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+let mayOpen = false;
+
+function showHub(keepMay) {
+  showView('view-hub');
+  setBC([]);
+  const ex = document.getElementById('may-expand');
+  const mc = document.getElementById('mc-may');
+  if (keepMay) {
+    if (!ex.classList.contains('open')) {
+      ex.classList.add('open');
+      mc.classList.add('open');
+      mayOpen = true;
+    }
+    setTimeout(() => ex.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+  } else {
+    // keep current expand state; nav logo doesn't change it
+  }
+}
+
+/* ─── POSTER AUTO-DETECT ────────────────────────────────────────── */
+(function () {
+  const src = '2026-05/Images/smart-ordering-poster.png';
+  const img = new Image();
+  img.onload = function () {
+    const slot = document.getElementById('poster-slot');
+    if (slot) slot.innerHTML = `<div class="poster-wrap"><img src="${src}" alt="EngageAI Smart Ordering" /></div>`;
+  };
+  img.src = src;
+})();
+
+function toggleMay() {
+  const ex = document.getElementById('may-expand');
+  const mc = document.getElementById('mc-may');
+  mayOpen = !mayOpen;
+  ex.classList.toggle('open', mayOpen);
+  mc.classList.toggle('open', mayOpen);
+  if (mayOpen) {
+    setTimeout(() => {
+      ex.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      scaleWaPoster();
+    }, 60);
+  }
+}
+
+/* ─── SCALE HTML POSTER IFRAME ─────────────────────────────────── */
+function scaleWaPoster() {
+  const wrap = document.getElementById('wa-poster-wrap');
+  const frame = document.getElementById('wa-poster-frame');
+  if (!wrap || !frame) return;
+  const scale = wrap.offsetWidth / 1200;
+  frame.style.transform = `scale(${scale})`;
+  wrap.style.paddingBottom = (675 * scale) + 'px';
+}
+
+window.addEventListener('resize', scaleWaPoster);
+// Also scale once DOM is ready
+document.addEventListener('DOMContentLoaded', () => setTimeout(scaleWaPoster, 100));
+
+function showFeature(id) {
+  const f = FEATURES[id];
+  if (!f) return;
+
+  const prev = f.prev ? `<button class="fdv-nav-btn" onclick="showFeature('${f.prev}')"><i class="ti ti-arrow-left"></i> Prev</button>` : '';
+  const next = f.next ? `<button class="fdv-nav-btn" onclick="showFeature('${f.next}')">Next <i class="ti ti-arrow-right"></i></button>` : '';
+
+  document.getElementById('fdv-body').innerHTML = `
+    <div class="fdv-toprow">
+      <button class="back-btn" onclick="showHub(true)"><i class="ti ti-arrow-left"></i> May 2026</button>
+      <div class="fdv-nav-btns">${prev}${next}</div>
+    </div>
+    <div class="fdv-hero">
+      <div class="fdv-badge">${f.badge}</div>
+      <h1 class="fdv-title">${f.title}</h1>
+      <p class="fdv-sub">${f.sub}</p>
+    </div>
+    ${f.render()}
+  `;
+
+  showView('view-feature');
+  setBC([
+    { label: 'May 2026', action: "showHub(true)" },
+    { label: f.title }
+  ]);
+}
+
+function setBC(crumbs) {
+  const bc = document.getElementById('nav-bc');
+  if (!crumbs.length) { bc.innerHTML = ''; return; }
+  bc.innerHTML = crumbs.map((c, i) => {
+    const sep = i > 0 ? '<span class="bc-sep">›</span>' : '';
+    if (c.action) {
+      return `${sep}<button class="bc-btn" onclick="${c.action}">${c.label}</button>`;
+    }
+    return `${sep}<span class="bc-current">${c.label}</span>`;
+  }).join('');
+}
+
+/* ─── LIGHTBOX ─────────────────────────────────────────────────── */
+
+function openLb(src, cap) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-cap').textContent = cap;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLb() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLb();
+});
+
+/* ─── INIT ─────────────────────────────────────────────────────── */
+showHub();
+</script>
+</body>
+</html>
